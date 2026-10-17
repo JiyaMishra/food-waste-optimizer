@@ -22,7 +22,15 @@ jobs:
         run: python scripts/generate_synthetic_data.py --months 6 --seed 42
       - name: Validate generated datasets
         run: python scripts/validate_data.py
+      - name: Check same-seed reproducibility
+        run: python scripts/check_reproducibility.py --months 6 --seed 42
       - name: Run tests
         run: pytest -q
-      - name: Evaluate forecast
+      - name: Train final model artifact
+        run: python scripts/train_model.py
+      - name: Evaluate forecast against baseline
         run: python scripts/evaluate_model.py
+      - name: Smoke-test dish demand prediction
+        run: python scripts/predict.py --date 2026-09-01 --meal-type breakfast
+      - name: Smoke-test interval attendance prediction
+        run: python scripts/predict_attendance.py --date 2026-09-01 --meal-type breakfast
