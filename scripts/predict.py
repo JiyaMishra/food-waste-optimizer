@@ -1,4 +1,4 @@
-"""Generate a future-date dish forecast from the saved artifact."""
+"""Generate a future-date dish forecast using the selected model or safe baseline fallback."""
 import argparse, json, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -7,7 +7,7 @@ import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--date", required=True, help="Forecast date, YYYY-MM-DD")
-parser.add_argument("--meal-type", default="breakfast")
+parser.add_argument("--meal-type", choices=["breakfast", "lunch", "snacks", "dinner"], default="breakfast")
 parser.add_argument("--data-dir", default="data/generated")
 parser.add_argument("--artifact", default="ml/artifacts/context_model.joblib")
 args = parser.parse_args()
@@ -28,13 +28,18 @@ for dish, group in daily.groupby("dish_id"):
         "demand_rolling_7": float(group.demand_qty.tail(7).mean()),
         "meal_type": args.meal_type, "dish_id": str(dish)}
     x = pd.DataFrame([{name: features[name] for name in artifact["features"]}])
-    prediction = max(0.0, float(artifact["model"].predict(x)[0]))
+    if artifact.get("selected_model") == "weekday_baseline":
+        key = f"{args.meal_type}|{dish}|{forecast_date.dayofweek}"
+        prediction = float(artifact["baseline_lookup"].get(key, artifact["baseline_overall"]))
+    else:
+        prediction = float(artifact["model"].predict(x)[0])
+    prediction = max(0.0, prediction)
     lower = max(0.0, prediction + float(artifact.get("residual_lower", 0.0)))
     upper = max(lower, prediction + float(artifact.get("residual_upper", 0.0)))
     rows.append({"date": forecast_date.date().isoformat(), "meal_type": args.meal_type, "dish_id": dish,
         "prediction": round(prediction, 2), "lower_bound": round(lower, 2), "upper_bound": round(upper, 2),
-        "model_version": artifact["model_version"], "forecast_cutoff": forecast_date.date().isoformat(),
-        "feature_schema_version": artifact.get("feature_schema_version", "1.0"),
+        "model_version": artifact["model_version"], "selected_model": artifact.get("selected_model", "legacy_context_model"),
+        "forecast_cutoff": forecast_date.date().isoformat(), "feature_schema_version": artifact.get("feature_schema_version", "1.0"),
         "interval_method": artifact.get("interval_method", "not available"),
         "interval_is_calibrated": bool(artifact.get("interval_is_calibrated", False)),
         "unit": "portions", "is_synthetic": True})
