@@ -22,7 +22,7 @@ pytest -q
 Run a forecast after training:
 
 ```bash
-python scripts/predict.py --date 2026-04-15 --meal-type breakfast
+python scripts/predict.py --date 2026-09-01 --meal-type breakfast
 ```
 
 Generated CSV files are written to `data/generated/`. The model is saved under `ml/artifacts/`.
