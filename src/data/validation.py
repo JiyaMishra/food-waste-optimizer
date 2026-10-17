@@ -140,4 +140,30 @@ def validate_dataset(data_dir="data/generated"):
         if set(state["date"]) - set(weather["date"]):
             errors.append("hostel_daily_state.csv contains dates absent from weather_daily.csv")
 
+    # Validate time ranges and categorical bounds instead of silently accepting malformed rows.
+    for filename in ["academic_slots.csv", "campus_events.csv"]:
+        frame = frames.get(filename)
+        if frame is not None and not frame.empty and {"start_time", "end_time"}.issubset(frame.columns):
+            try:
+                start = pd.to_timedelta(frame["start_time"].astype(str) + ":00", errors="raise")
+                end = pd.to_timedelta(frame["end_time"].astype(str) + ":00", errors="raise")
+                if not (start < end).all():
+                    errors.append(f"{filename}: start_time must precede end_time")
+            except (ValueError, TypeError):
+                errors.append(f"{filename}: invalid start_time/end_time values")
+
+    pref = frames.get("preference_survey_synthetic.csv")
+    if pref is not None and not pref.empty and "rating" in pref:
+        ratings = pd.to_numeric(pref["rating"], errors="coerce")
+        if ratings.isna().any() or not ratings.between(1, 5).all():
+            errors.append("preference_survey_synthetic.csv: ratings must be integers from 1 to 5")
+        if {"respondent_key", "dish_id"}.issubset(pref.columns) and pref.duplicated(["respondent_key", "dish_id"]).any():
+            errors.append("preference_survey_synthetic.csv: duplicate respondent_key/dish_id responses")
+
+    events = frames.get("campus_events.csv")
+    if events is not None and not events.empty and {"expected_participants"}.issubset(events.columns):
+        participants = pd.to_numeric(events["expected_participants"], errors="coerce")
+        if participants.isna().any() or (participants < 0).any():
+            errors.append("campus_events.csv: expected_participants must be non-negative numeric values")
+
     return {"ok": not errors, "errors": errors, "files": report}
