@@ -23,8 +23,11 @@ daily = hist.groupby(["date", "dish_id"], as_index=False).agg(demand_qty=("deman
 rows = []
 for dish, group in daily.groupby("dish_id"):
     group = group.sort_values("date")
-    x = pd.DataFrame([{"weekday": forecast_date.dayofweek, "month": forecast_date.month,
-        "demand_lag_1": float(group.demand_qty.iloc[-1]), "demand_rolling_7": float(group.demand_qty.tail(7).mean())}])[artifact["features"]]
+    features = {"weekday": forecast_date.dayofweek, "month": forecast_date.month,
+        "demand_lag_1": float(group.demand_qty.iloc[-1]),
+        "demand_rolling_7": float(group.demand_qty.tail(7).mean()),
+        "meal_type": args.meal_type, "dish_id": str(dish)}
+    x = pd.DataFrame([{name: features[name] for name in artifact["features"]}])
     prediction = max(0.0, float(artifact["model"].predict(x)[0]))
     lower = max(0.0, prediction + float(artifact.get("residual_lower", 0.0)))
     upper = max(lower, prediction + float(artifact.get("residual_upper", 0.0)))
