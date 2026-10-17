@@ -1,0 +1,10 @@
+dish_id,dish_name,category,meal_type,vegetarian_flag,default_unit,typical_portion_size,prep_lead_minutes,batch_min,batch_max,kitchen_capacity_per_interval,menu_source,source_date,is_synthetic
+D001,Idli,breakfast,breakfast,true,portions,2,45,20,500,180,starter_seed,2026-08-01,true
+D002,Dosa,breakfast,breakfast,true,portions,1,35,20,500,160,starter_seed,2026-08-01,true
+D003,Upma,breakfast,breakfast,true,portions,1,30,20,500,160,starter_seed,2026-08-01,true
+D004,Sambar,lunch,lunch,true,portions,1,40,20,700,220,starter_seed,2026-08-01,true
+D005,Rice,lunch,lunch,true,portions,1,35,20,700,250,starter_seed,2026-08-01,true
+D006,Chapathi,lunch,lunch,true,portions,2,45,20,700,200,starter_seed,2026-08-01,true
+D007,Vegetable snack,snacks,snacks,true,portions,1,30,10,400,150,starter_seed,2026-08-01,true
+D008,Curd rice,dinner,dinner,true,portions,1,30,20,600,180,starter_seed,2026-08-01,true
+D009,Poriyal,dinner,dinner,true,portions,1,35,20,600,160,starter_seed,2026-08-01,true
