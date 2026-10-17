@@ -18,7 +18,7 @@
 - evaluate_chronologically(features, test_days=30)
 
 ## Forecast contract
-Dish forecasts include date, meal_type, dish_id, prediction, lower_bound, upper_bound, model_version, forecast_cutoff, feature_schema_version, interval_method, interval_is_calibrated, unit and is_synthetic. Interval offsets are empirical and explicitly not claimed calibrated. Arrival forecasts include interval start, predicted arrivals, descriptive lower/upper estimates, rush class and sample count.
+Dish forecasts include date, meal_type, dish_id, prediction, lower_bound, upper_bound, model_version, selected_model, forecast_cutoff, feature_schema_version, interval_method, interval_is_calibrated, unit and is_synthetic. Training selects the context model only if it beats the weekday baseline on a chronological validation window; otherwise inference uses the baseline fallback. Interval offsets are empirical and explicitly not claimed calibrated. Arrival forecasts include interval start, predicted arrivals, descriptive lower/upper estimates, rush class and sample count.
 
 ## Clean checkout run order
     python -m venv .venv
