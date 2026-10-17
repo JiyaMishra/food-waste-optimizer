@@ -12,7 +12,7 @@ def generate_synthetic_data(output_dir="data/generated", months=6, seed=42, resi
     rng = np.random.default_rng(seed)
     out = Path(output_dir); out.mkdir(parents=True, exist_ok=True)
     end = pd.Timestamp("2026-08-31")
-    dates = pd.date_range(end=end, periods=max(180, months * 30), freq="D")
+    dates = pd.date_range(end=end, periods=max(30, months * 30), freq="D")
     scenario_id = "synthetic_baseline_v1"
     generated_at = datetime.now(timezone.utc).isoformat()
     meta = {"is_synthetic": True, "generation_seed": seed, "generated_at": generated_at,
