@@ -15,3 +15,11 @@ def test_invalid_quantity_accounting_is_reported(tmp_path):
     report = validate_dataset(tmp_path)
     assert not report["ok"]
     assert any("negative values" in e or "consumed_qty exceeds" in e for e in report["errors"])
+
+def test_invalid_time_range_is_reported(tmp_path):
+    pd.DataFrame([{"date":"2026-01-01","cohort_id":"C1","activity_type":"class",
+        "start_time":"10:00","end_time":"08:00", "is_synthetic":True,"generation_seed":42,
+        "generated_at":"2026-01-01T00:00:00Z","scenario_id":"test","dataset_version":"1"}]).to_csv(
+        tmp_path/"academic_slots.csv", index=False)
+    report = validate_dataset(tmp_path)
+    assert any("start_time must precede end_time" in e for e in report["errors"])
