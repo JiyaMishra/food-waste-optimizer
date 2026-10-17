@@ -97,11 +97,16 @@ def generate_synthetic_data(output_dir="data/generated", months=6, seed=42, resi
     pd.DataFrame(menu_rows).to_csv(out/"menu_calendar.csv",index=False)
     pd.DataFrame(attendance_rows).to_csv(out/"meal_attendance.csv",index=False)
     pd.DataFrame(operations_rows).to_csv(out/"food_operations.csv",index=False)
-    # Synthetic preference responses; never real survey data.
-    for i, row in menu.iterrows():
-        preference_rows.append({"respondent_key":f"P{i+1:04d}","dish_id":row.dish_id,
-                                "rating":int(rng.integers(2,6)),"is_synthetic":True,
-                                "generation_seed":seed,"generated_at":generated_at,
-                                "scenario_id":scenario_id,"dataset_version":"1.0.0"})
+    # Synthetic preference responses; never real survey data. Each respondent rates
+    # a subset of dishes, creating enough observations for preference aggregation.
+    for respondent_i in range(min(max(residents, 100), 300)):
+        chosen_count = min(len(menu), int(rng.integers(3, min(7, len(menu)) + 1)))
+        chosen_indices = rng.choice(len(menu), size=chosen_count, replace=False)
+        for menu_i in chosen_indices:
+            row = menu.iloc[int(menu_i)]
+            preference_rows.append({"respondent_key":f"P{respondent_i+1:05d}","dish_id":row.dish_id,
+                                    "rating":int(rng.integers(1,6)),"is_synthetic":True,
+                                    "generation_seed":seed,"generated_at":generated_at,
+                                    "scenario_id":scenario_id,"dataset_version":"1.0.0"})
     pd.DataFrame(preference_rows).to_csv(out/"preference_survey_synthetic.csv",index=False)
     return out
