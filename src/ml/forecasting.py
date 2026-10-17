@@ -3,25 +3,43 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
 
-FEATURES = ["weekday", "month", "demand_lag_1", "demand_rolling_7"]
-MODEL_VERSION = "context-hgb-v2"
+NUMERIC_FEATURES = ["weekday", "month", "demand_lag_1", "demand_rolling_7"]
+CATEGORICAL_FEATURES = ["meal_type", "dish_id"]
+FEATURES = NUMERIC_FEATURES + CATEGORICAL_FEATURES
+MODEL_VERSION = "context-rf-v3"
 SEED = 42
 
 def _clean(features):
-    required = set(FEATURES + ["date", "meal_type", "dish_id", "demand_qty"])
+    required = set(FEATURES + ["date", "demand_qty"])
     missing = required - set(features.columns)
     if missing:
         raise ValueError(f"features missing required columns: {sorted(missing)}")
     data = features.copy()
     data["date"] = pd.to_datetime(data["date"], errors="raise")
     data["demand_qty"] = pd.to_numeric(data["demand_qty"], errors="raise")
+    for col in NUMERIC_FEATURES:
+        data[col] = pd.to_numeric(data[col], errors="raise")
     data = data.dropna(subset=FEATURES + ["demand_qty"]).sort_values("date")
     if (data["demand_qty"] < 0).any():
         raise ValueError("demand_qty cannot be negative")
+    for col in CATEGORICAL_FEATURES:
+        data[col] = data[col].astype(str)
     return data
+
+def _make_model():
+    preprocess = ColumnTransformer([
+        ("numeric", "passthrough", NUMERIC_FEATURES),
+        ("categorical", OneHotEncoder(handle_unknown="ignore", sparse_output=False), CATEGORICAL_FEATURES),
+    ])
+    estimator = RandomForestRegressor(n_estimators=250, min_samples_leaf=3, max_features=0.9,
+                                      random_state=SEED, n_jobs=-1)
+    return Pipeline([("preprocess", preprocess), ("model", estimator)])
 
 def _baseline(train, test):
     means = train.groupby(["meal_type", "dish_id", "weekday"])["demand_qty"].mean()
@@ -29,7 +47,7 @@ def _baseline(train, test):
     return test.apply(lambda row: means.get((row.meal_type, row.dish_id, row.weekday), overall), axis=1).astype(float).to_numpy()
 
 def train_model(features, artifact_path="ml/artifacts/context_model.joblib"):
-    """Fit final model and store chronological calibration-residual quantiles."""
+    """Fit a categorical-aware model and save empirical calibration residual offsets."""
     data = _clean(features)
     unique_dates = sorted(data["date"].dt.normalize().unique())
     if len(data) < 30 or len(unique_dates) < 10:
@@ -40,16 +58,17 @@ def train_model(features, artifact_path="ml/artifacts/context_model.joblib"):
     calibration = data[data["date"].dt.normalize() >= calibration_start]
     if fit.empty or calibration.empty:
         raise ValueError("Unable to create chronological calibration split")
-    calibration_model = HistGradientBoostingRegressor(max_iter=100, random_state=SEED)
-    calibration_model.fit(fit[FEATURES].astype(float), fit["demand_qty"].astype(float))
-    calibration_pred = np.maximum(0, calibration_model.predict(calibration[FEATURES].astype(float)))
+    calibration_model = _make_model()
+    calibration_model.fit(fit[FEATURES], fit["demand_qty"].astype(float))
+    calibration_pred = np.maximum(0, calibration_model.predict(calibration[FEATURES]))
     residuals = calibration["demand_qty"].to_numpy(dtype=float) - calibration_pred
     lower_residual, upper_residual = float(np.quantile(residuals, .10)), float(np.quantile(residuals, .90))
-    model = HistGradientBoostingRegressor(max_iter=100, random_state=SEED)
-    model.fit(data[FEATURES].astype(float), data["demand_qty"].astype(float))
-    artifact = {"model": model, "features": FEATURES, "model_version": MODEL_VERSION,
+    model = _make_model()
+    model.fit(data[FEATURES], data["demand_qty"].astype(float))
+    artifact = {"model": model, "features": FEATURES, "numeric_features": NUMERIC_FEATURES,
+        "categorical_features": CATEGORICAL_FEATURES, "model_version": MODEL_VERSION,
         "training_cutoff": str(data["date"].max().date()), "random_seed": SEED,
-        "feature_schema_version": "1.1", "target_unit": "portions",
+        "feature_schema_version": "1.2", "target_unit": "portions",
         "interval_method": "10th/90th quantiles of chronological calibration residuals",
         "calibration_period": f"{calibration['date'].min().date()} to {calibration['date'].max().date()}",
         "calibration_rows": int(len(calibration)), "residual_lower": lower_residual,
@@ -60,7 +79,7 @@ def train_model(features, artifact_path="ml/artifacts/context_model.joblib"):
     return artifact
 
 def evaluate_chronologically(features, test_days=30):
-    """Compare context model and historical weekday baseline on identical future dates."""
+    """Compare categorical-aware model and historical weekday baseline on identical dates."""
     data = _clean(features)
     unique_dates = sorted(data["date"].dt.normalize().unique())
     if len(unique_dates) <= test_days:
@@ -69,9 +88,9 @@ def evaluate_chronologically(features, test_days=30):
     train, test = data[data["date"].dt.normalize() < test_start], data[data["date"].dt.normalize() >= test_start]
     if train.empty or test.empty:
         raise ValueError("Chronological split produced empty train/test set")
-    model = HistGradientBoostingRegressor(max_iter=100, random_state=SEED)
-    model.fit(train[FEATURES].astype(float), train["demand_qty"].astype(float))
-    pred = np.maximum(0, model.predict(test[FEATURES].astype(float)))
+    model = _make_model()
+    model.fit(train[FEATURES], train["demand_qty"].astype(float))
+    pred = np.maximum(0, model.predict(test[FEATURES]))
     baseline = np.maximum(0, _baseline(train, test))
     actual = test["demand_qty"].to_numpy(dtype=float)
     context_mae, baseline_mae = mean_absolute_error(actual, pred), mean_absolute_error(actual, baseline)
