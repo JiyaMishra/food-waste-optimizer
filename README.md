@@ -40,6 +40,24 @@ Do not regenerate data automatically when an application starts.
 - Chronological holdout evaluation (MAE/RMSE) and saved artifacts.
 - Tests and handover contracts for Person B.
 
+## Person B backend
+
+The FastAPI backend lives in `backend/`. It integrates Person A's data, availability and model
+modules without duplicating them, and adds database persistence, waste diagnosis, agent
+orchestration, constrained batch planning, simulation, evaluation and exports.
+
+```bash
+python -m pip install -r requirements.txt
+alembic -c backend/alembic.ini upgrade head
+uvicorn backend.app.main:app --reload --port 8000
+pytest backend/tests -q
+python backend/scripts/demo_workflow.py
+```
+
+API docs: http://localhost:8000/docs. See `backend/README.md` and
+`docs/person_b_handover.md` for endpoints, environment variables, examples, limitations and the
+Person C integration checklist.
+
 ## Scope boundary
 
 Person A does **not** implement the full FastAPI application, agent orchestration, waste diagnosis,
