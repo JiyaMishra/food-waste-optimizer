@@ -1,0 +1,30 @@
+name: Person B backend checks
+
+on:
+  push:
+    branches: [person-b, main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Apply database migrations from zero
+        run: alembic -c backend/alembic.ini upgrade head
+      - name: Verify migrations match models
+        run: alembic -c backend/alembic.ini check
+      - name: Run Person A tests
+        run: pytest -q
+      - name: Run Person B backend tests
+        run: pytest backend/tests -q
+      - name: Run end-to-end demo
+        run: python backend/scripts/demo_workflow.py
