@@ -1,0 +1,24 @@
+{
+  "name": "food-waste-optimizer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Autonomous Context-Aware Food Waste Optimization System",
+  "scripts": {
+    "start": "python run_project.py",
+    "dev": "python run_project.py",
+    "build": "npm --prefix frontend run build",
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "python -m uvicorn backend.app.main:app --reload --port 8000",
+    "test": "pytest tests backend/tests -q",
+    "smoke": "python scripts/person_c_smoke_test.py",
+    "lint": "npm --prefix frontend run lint"
+  },
+  "keywords": [
+    "food-waste-optimization",
+    "fastapi",
+    "react",
+    "machine-learning"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -52,14 +52,26 @@ INTERVALS = {
 }
 
 
+STAGE_SEQUENCE = {
+    "context_observation": 1,
+    "availability_estimate": 2,
+    "demand_forecast": 3,
+    "constrained_planning": 4,
+    "pre_meal_diagnosis": 5,
+    "post_meal_diagnosis": 6,
+    "outcome_learning": 7,
+}
+
+
 def _stages(db: Session, trace_id: str) -> list[AgentStageOut]:
     rows = list(
         db.scalars(
             select(AgentTrace)
             .where(AgentTrace.trace_id == trace_id)
-            .order_by(AgentTrace.created_at, AgentTrace.stage)
+            .order_by(AgentTrace.created_at)
         ).all()
     )
+    rows.sort(key=lambda r: (r.created_at, STAGE_SEQUENCE.get(r.stage, 99)))
     return [
         AgentStageOut(
             stage=row.stage,

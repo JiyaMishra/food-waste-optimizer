@@ -1,0 +1,3 @@
+@echo off
+echo Starting Food Waste Optimization System...
+npm start

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: food_waste_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-food_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-food_secure_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-food_optimizer}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-food_user} -d ${POSTGRES_DB:-food_optimizer}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: food_waste_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-food_user}:${POSTGRES_PASSWORD:-food_secure_pass}@db:5432/${POSTGRES_DB:-food_optimizer}
+      CORS_ORIGINS: http://localhost,http://localhost:80,http://localhost:3000,http://localhost:5173
+      LOG_LEVEL: INFO
+      ENVIRONMENT: production
+    ports:
+      - "8000:8000"
+    volumes:
+      - ml_artifacts:/app/ml/artifacts
+      - backend_data:/app/backend/data
+      - generated_data:/app/data/generated
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+    container_name: food_waste_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  ml_artifacts:
+  backend_data:
+  generated_data:

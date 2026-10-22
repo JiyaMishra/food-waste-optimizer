@@ -1,0 +1,190 @@
+PERSON C
+Step-by-Step Implementation Guide
+Autonomous Context-Aware Food Waste Optimization System
+React dashboard, integration, end-to-end testing, containerization, deployment and final demonstration
+Owner
+Person C
+Implementation order
+Begin only after the previous person's phase is completed and handed over
+Primary output
+React dashboard, integration, end-to-end testing, containerization, deployment and final demonstration
+Person C begins after Person B has a working backend and has handed over stable API contracts. Person C owns the user-facing product and release process. The dashboard must use real API responses from the synthetic prototype, not hardcoded metrics.
+1. What Person C owns
+React + Vite + Tailwind frontend and interactive charts.
+Integration with Person B's FastAPI endpoints.
+All dashboard pages and scenario/simulation controls.
+Loading, empty, validation, success and error states.
+Frontend-backend integration and end-to-end smoke tests.
+Docker configuration, environment setup, deployment and deployed smoke tests.
+README, architecture diagram, screenshots, demo script and final release evidence.
+2. What Person C does not own
+Rebuilding Person A's synthetic data and ML pipeline.
+Reimplementing Person B's optimizer, agents or API business logic in frontend JavaScript.
+Inventing performance metrics, presenting synthetic results as real VIT results, or claiming real kitchen integration.
+3. Required handover before starting
+Get Person B's running backend, API docs, response schemas, sample scenario/run IDs and environment instructions.
+Confirm which endpoints are implemented and the exact backend base URL.
+Confirm CORS settings, expected errors, export routes and whether authentication is implemented.
+Get sample outputs for forecasts, diagnosis, batch plans, simulation state, evaluation and agent traces.
+Create a small integration checklist with Person B; resolve contract mismatches before polishing the UI.
+4. Step-by-step implementation
+Step 1 — Set up the frontend
+Create a React application with Vite and TypeScript if the shared project uses TypeScript.
+Install/configure Tailwind CSS and Plotly (or the agreed chart library).
+Create src/api/, src/components/, src/pages/, src/charts/ and src/types/.
+Set VITE_API_BASE_URL through environment configuration; never put backend secrets in Vite variables.
+Create a reusable API client with request timeouts, response parsing and consistent error handling.
+Done when: The frontend starts locally and can successfully call the backend health endpoint.
+Step 2 — Define UI data types and reusable components
+Create types/interfaces for meal, dish, forecast, uncertainty bounds, rush interval, diagnosis cause, batch plan, simulation state, evaluation metrics and agent trace.
+Build reusable page layout, navigation, status badges, synthetic-data banner, chart wrappers, loading indicators, empty states and error messages.
+Use explicit units and labels; distinguish portions from kilograms.
+Show model version, scenario ID, forecast cutoff and uncertainty where relevant.
+Avoid hardcoded demo values in production UI components; use fixture data only for isolated UI tests.
+Done when: All pages share consistent components and typed API responses.
+Step 3 — Build the Overview page
+Display the selected synthetic scenario, date and meal type.
+Show expected attendance, forecast demand, waste risk, shortage risk, latest run status and recent interventions using API data.
+Provide controls to choose scenario/date/meal and start a run using the backend endpoint.
+Keep a persistent SYNTHETIC DEMO DATA banner anywhere generated records or simulated results are shown.
+Show a clear empty state before data has been generated.
+Done when: The overview can start a real backend run and displays values returned by the API.
+Step 4 — Build Meal Planner and Rush Timeline
+Meal Planner: show menu items, total and dish-level forecasts, uncertainty ranges, initial/reserve quantities, capacity, lead time and rationale.
+Allow only the configuration changes supported by backend endpoints; validate before sending requests.
+Rush Timeline: chart predicted arrivals by interval and label low/normal/high rush using backend results.
+Label axes, units and the synthetic status. Provide a way to inspect the context/rationale for an interval.
+Display API errors when no model artifact, scenario or forecast is available.
+Done when: Forecast and plan screens are driven by API results and clearly explain quantities and uncertainty.
+Step 5 — Build Context & Availability and Waste Diagnosis
+Context & Availability: show synthetic occupancy, class/lab/exam overlap, event effects, weather context and available-population estimates.
+Waste Diagnosis: show ranked possible causes, evidence, uncertainty/confidence caveats and before/after comparisons when supported.
+Clearly separate estimated pre-meal risk from retrospective post-simulation diagnosis.
+Never display a cause as proven if the backend only reports an association or uncertain candidate.
+Show missing-data warnings returned by the backend.
+Done when: Context and diagnosis pages expose evidence and limitations without inventing explanations.
+Step 6 — Build Kitchen Live Simulation
+Show current interval, arrivals so far, remaining stock, batch status and projected end-of-service stock.
+Provide controls to start, advance one interval, finish the meal and view events, mapped to the backend simulation endpoints.
+Disable invalid controls based on run status and handle API rejection gracefully.
+Display replenishment/hold actions with the trigger reason, timestamp and approval/simulation status.
+At meal close, show prepared, served, consumed, untouched leftover, plate waste and shortage separately.
+Do not label a recommendation as executed unless the backend confirms the simulated action.
+Done when: The user can run a complete simulation through the UI and see the persisted final outcome.
+Step 7 — Build Menu Analytics, Evaluation, Agent Trace and Settings
+Menu Analytics: compare dish acceptance, repetition, demand and waste rates across comparable synthetic contexts.
+Evaluation: compare baseline and context-aware forecasting metrics and fixed-batch versus context-aware policy outcomes separately.
+Agent Trace: display each stage, input summary, tool/function calls, output, duration, status and errors.
+Settings/Data: show generation seed, dataset/scenario versions, model version and available demo controls.
+Add CSV/JSON export using the backend's export route or a documented supported client-side export.
+Explain metric denominators and show a suitable message when R² or percentage reduction is undefined.
+Done when: Every page reads its values from backend data and handles missing/empty results.
+Step 8 — Integrate and test the full workflow
+Run the frontend and backend together using documented local commands.
+Test: generate synthetic data → choose scenario → calculate context/availability → forecast → plan → start simulation → advance intervals → finish → view evaluation → inspect agent trace → export.
+Test loading, slow responses, timeouts, invalid inputs, missing data, server errors and stale run IDs.
+Check chart axes, legends, units, responsive layout, readable text and clear status messages.
+Confirm the synthetic-data banner is visible wherever generated data/results appear.
+Use automated frontend tests for key components and a documented manual end-to-end checklist.
+Done when: A teammate can complete the full demo path without manually editing the database or source code.
+Step 9 — Prepare Docker configuration
+Create a frontend Dockerfile and backend Dockerfile if they are not already supplied.
+Create or complete Docker Compose for frontend, backend and PostgreSQL, including database health checks and service dependencies.
+Use environment variables and an .env.example with placeholders; do not commit .env files, passwords, API keys or tokens.
+Ensure migrations run as a controlled startup/release step and demo data is generated through an explicit command/action rather than on every app start.
+Check that model artifacts and database data persist as required and are not lost when containers restart.
+Test a clean build from the repository instructions.
+Done when: Docker Compose can start the full local application from a clean setup and data/model persistence behaves as documented.
+Step 10 — Deploy the application
+Choose one frontend host, one backend/container host and a managed PostgreSQL service or the agreed hosting architecture.
+Set production environment variables, allowed CORS origins and database credentials securely.
+Use HTTPS, least-privilege database credentials, restricted CORS and appropriate request timeouts/rate limits.
+Configure health/readiness checks and verify database connectivity and model-file loading.
+Do not expose backend secrets in Vite environment variables or frontend bundles.
+Record the deployed URL, commit hash, model version and database migration version.
+Done when: The deployed application is reachable and health/readiness checks pass.
+Step 11 — Run deployed smoke tests
+Against the deployed URL, test health, data generation, forecast, planning, simulation start/step/finish, evaluation and export.
+Verify all values are derived from the deployed backend/database and that the synthetic banner is present.
+Check logs for failures, CORS errors, missing model artifacts, migration problems and unhandled exceptions.
+Verify secrets are not exposed and refresh/restart behavior does not unexpectedly erase required records.
+Record each test as pass/fail with evidence and list any manual step still required.
+Done when: The complete workflow works on the deployed environment, with documented results and known limitations.
+Step 12 — Prepare final documentation and demonstration
+Create/update README with architecture, setup, environment variables, migrations, data generation, tests and deployment instructions.
+Include architecture diagram, data flow, screenshots, sample evaluation report, limitations and source attribution.
+Prepare a 5–7 minute demo: open overview and synthetic banner; select early-class rush or exam morning; inspect context and forecast; review batch plan; run simulation; inspect diagnosis, outcomes, evaluation and agent trace.
+Make sure each team member can explain their own implementation and the end-to-end pipeline.
+Do not claim public hosting proves real-world waste reduction; it proves the hosted prototype workflow works.
+Done when: A new evaluator can access the application and follow the demo script without special undocumented steps.
+5. Required dashboard pages
+Page
+Must show
+Main interaction
+Overview
+Synthetic meal, expected attendance, waste/shortage risk, run status
+Select scenario/date/meal; start run
+Meal Planner
+Dish demand, bounds, initial/reserve batches, capacity and lead time
+Review/recompute plan
+Rush Timeline
+Arrivals by interval, rush class, context overlays
+Inspect interval rationale
+Context & Availability
+Occupancy, schedule conflicts, events, availability estimate
+Inspect factors and missing data
+Waste Diagnosis
+Ranked causes, evidence, caveats
+Expand cause details
+Kitchen Live Simulation
+Arrivals, stock, batches, actions and final outcomes
+Start, step and finish
+Menu Analytics
+Preference/acceptance, repetition, demand and waste trends
+Compare similar contexts
+Evaluation
+Forecast metrics and policy outcomes
+Compare model/policy/scenario
+Agent Trace
+Stage inputs/outputs, calls, timing, status/errors
+Inspect recommendation trace
+Settings / Data
+Seed, scenario/dataset versions, model version
+Generate/reset demo data where supported
+6. Suggested frontend layout
+frontend/├── src/│   ├── api/│   │   ├── client.ts│   │   ├── forecasts.ts│   │   ├── simulations.ts│   │   └── evaluation.ts│   ├── components/│   │   ├── Layout.tsx│   │   ├── SyntheticBanner.tsx│   │   ├── LoadingState.tsx│   │   ├── ErrorState.tsx│   │   └── MetricCard.tsx│   ├── pages/│   │   ├── Overview.tsx│   │   ├── MealPlanner.tsx│   │   ├── RushTimeline.tsx│   │   ├── ContextAvailability.tsx│   │   ├── WasteDiagnosis.tsx│   │   ├── KitchenSimulation.tsx│   │   ├── MenuAnalytics.tsx│   │   ├── Evaluation.tsx│   │   ├── AgentTrace.tsx│   │   └── SettingsData.tsx│   ├── charts/│   └── types/├── Dockerfile└── README.md
+7. Acceptance checklist
+☐ Frontend starts from documented instructions.
+☐ API base URL is configurable and no secrets are exposed in frontend variables.
+☐ All ten dashboard pages or their agreed equivalents are implemented.
+☐ Forecasts, plans, diagnosis, simulation and metrics come from backend responses.
+☐ Synthetic-data banner appears across relevant screens.
+☐ Charts have titles, axes, units and legends.
+☐ Loading, empty, validation and error states are implemented.
+☐ Simulation controls respect backend run state and show confirmed actions only.
+☐ Plate waste, untouched leftovers and shortages are shown separately.
+☐ Baseline-vs-model metrics are distinct from policy outcome metrics.
+☐ Full end-to-end workflow passes locally.
+☐ Docker Compose works from a clean setup.
+☐ Deployment health checks and deployed smoke tests pass.
+☐ README, architecture diagram, screenshots, demo script and limitations are complete.
+8. Common mistakes to avoid
+Hardcoding forecast values, waste-reduction percentages or chart data.
+Making UI controls that do not call a working backend action.
+Silently assuming a successful action before the API confirms it.
+Putting database passwords or model-provider keys in VITE_* variables.
+Generating a new dataset on every app restart and making results irreproducible.
+Showing only a success message while ignoring backend validation errors.
+Using vague charts without units or denominators.
+Claiming the prototype is connected to live VIT attendance, weather or kitchen systems when it is not.
+Calling synthetic results proof of actual food-waste reduction.
+9. Final release handover
+Repository commit/tag and deployed URL.
+Local setup and production configuration instructions.
+Environment variable checklist with no secret values.
+Docker Compose and migration instructions.
+End-to-end smoke-test results and screenshots.
+Architecture diagram, README and 5–7 minute demo script.
+Known issues, deployment limitations and exact manual steps.
+Confirmation from Persons A and B that their contributions are represented correctly.
+Person C's phase is complete only when the full synthetic-data workflow is accessible, reproducible, tested and documented in the deployed application.

@@ -1,73 +1,132 @@
-# Autonomous Context-Aware Food Waste Optimization System — Person A
+# Autonomous Context-Aware Food Waste Optimization System
 
-Person A's phase: reproducible synthetic data, data validation, vegetarian menu catalogue,
-availability/context features, baseline and context-aware forecasting, evaluation, tests and handover.
+An intelligent, context-driven cafeteria food waste optimization platform combining machine learning demand forecasting, constrained split-batch kitchen optimization, multi-agent orchestration, interactive real-time simulation, and an executive operations dashboard.
 
-> **Synthetic-data notice:** every generated record and result is simulated. This repository is not
-> connected to VIT attendance, live weather, student identities, or kitchen systems.
+> **CRITICAL SYNTHETIC-DATA NOTICE**: All records, student resident rosters, timetable slots, hostel contexts, weather readings, forecasts, waste diagnoses, and simulation outcomes are **synthetic simulations**. The system is **NOT** connected to live VIT attendance, student biometric identity systems, live campus telemetry, or university kitchen facilities.
 
-## Quick start
+---
+
+## System Workstreams & Architecture
+
+| Workstream | Lead | Core Deliverables | Technology Stack |
+|---|---|---|---|
+| **Data & ML Forecaster** | **Person A** | Synthetic dataset generator (6 months), data validator, vegetarian menu catalogue, overlap-safe availability engine, historical lag feature pipeline, Random Forest context-aware model, 80% quantile residual uncertainty, evaluation protocols. | Python 3.11+, Scikit-learn, Pandas, NumPy, Pytest |
+| **Backend & Orchestrator** | **Person B** | Production FastAPI application, SQLAlchemy ORM & Alembic migrations (PostgreSQL/SQLite), pre/post meal evidence-based waste diagnosis, deterministic split-batch optimizer, 5-stage sequential agent orchestrator, interval simulation engine, CSV/JSON audit exports. | FastAPI, SQLAlchemy, Alembic, Pydantic v2, PostgreSQL / SQLite |
+| **Frontend & Cockpit** | **Person C** | Modern React 19 + TypeScript cockpit, dark glassmorphism design system, persistent synthetic guardrail banners, 4 custom SVG interactive charts, 10 operational dashboard pages, resilient API client with domain error recovery, multi-stage Dockerfile, Docker Compose, 5-7 min demo script, automated 12-step smoke test suite. | React 19, TypeScript, Vite, Lucide Icons, Nginx Alpine, Docker |
+
+---
+
+## Dashboard Pages (Person C Cockpit)
+
+1. **Executive Overview (`/`)**: Daily KPI metrics (portions and kg), system readiness, and daily meal forecast vs waste summary.
+2. **Smart Meal Planner (`/planner`)**: Dish demand forecast with 80% residual bounds (`[q10, q90]`) and split-batch optimizer (initial batch, dynamic reserve, trigger threshold).
+3. **Rush Timeline (`/timeline`)**: 30-minute interval diner arrival curves and peak rush categorization.
+4. **Context & Availability (`/context`)**: Environmental signals (rain, temperature), hostel occupancy, and overlap-safe diner availability deduction.
+5. **Waste Diagnosis (`/diagnosis`)**: Pre-meal waste risk scoring and post-meal evidence-based root-cause diagnosis with actionable remedies.
+6. **Kitchen Live Simulation (`/simulation`)**: Interactive interval-by-interval meal simulation comparing fixed baseline vs context-aware split-batch policies with real-time reserve triggering.
+7. **Menu Analytics (`/menu`)**: Dish popularity, preparation cost per portion, and historical waste intensity tracking.
+8. **Policy Evaluation (`/evaluation`)**: Direct policy benchmark comparing baseline vs context-aware policies under identical synthetic demand realizations.
+9. **Agent Orchestrator Trace (`/traces`)**: Inspection of the 5-stage sequential autonomous agent workflow with execution latency and payload inspector.
+10. **Settings & Data Management (`/settings`)**: Synthetic dataset regeneration, database synchronization, model retraining trigger, and CSV/JSON audit exports.
+
+---
+
+## Quick Start Guide
+
+### Option 1: Full-Stack via Docker Compose (Recommended)
+
+Run the entire platform (PostgreSQL database, FastAPI backend, and React/Nginx frontend) in isolated containers:
 
 ```bash
+# 1. Copy the environment template
+cp .env.example .env
+
+# 2. Build and launch all containers
+docker compose up --build
+```
+
+- **Frontend Dashboard**: http://localhost:80
+- **Backend API & Swagger Docs**: http://localhost:8000/docs
+- **PostgreSQL Database**: `localhost:5432`
+
+---
+
+### Option 2: Local Development Setup
+
+#### 1. Backend Setup (FastAPI & ML Engine)
+```bash
+# Set up Python virtual environment
 python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
+
+# Install dependencies
 python -m pip install -r requirements.txt
-python scripts/generate_synthetic_data.py --months 6 --seed 42
-python scripts/validate_data.py
-python scripts/train_model.py
-python scripts/evaluate_model.py
-pytest -q
-```
 
-Run a forecast after training:
-
-```bash
-python scripts/predict.py --date 2026-09-01 --meal-type breakfast
-```
-
-Generated CSV files are written to `data/generated/`. The model is saved under `ml/artifacts/`.
-Do not regenerate data automatically when an application starts.
-
-## What is implemented
-
-- Seeded, related synthetic datasets for residents, daily hostel state, academic slots, events,
-  weather, menu calendar, preferences, meal attendance and food operations.
-- Vegetarian starter menu catalogue; extend it only after manually verifying supplied menu images.
-- Referential/quantity validation and synthetic provenance metadata.
-- Availability estimates with overlapping-unavailability protection.
-- Forecast-time feature builder with historical lag features.
-- Historical weekday baseline and scikit-learn context-aware model.
-- Chronological holdout evaluation (MAE/RMSE) and saved artifacts.
-- Tests and handover contracts for Person B.
-
-## Person B backend
-
-The FastAPI backend lives in `backend/`. It integrates Person A's data, availability and model
-modules without duplicating them, and adds database persistence, waste diagnosis, agent
-orchestration, constrained batch planning, simulation, evaluation and exports.
-
-```bash
-python -m pip install -r requirements.txt
+# Apply database migrations
 alembic -c backend/alembic.ini upgrade head
-uvicorn backend.app.main:app --reload --port 8000
+
+# Run backend test suite (50 passing tests)
 pytest backend/tests -q
-python backend/scripts/demo_workflow.py
+pytest tests -q
+
+# Start backend server
+python -m uvicorn backend.app.main:app --reload --port 8000
 ```
 
-API docs: http://localhost:8000/docs. See `backend/README.md` and
-`docs/person_b_handover.md` for endpoints, environment variables, examples, limitations and the
-Person C integration checklist.
+#### 2. Frontend Setup (React 19 + TypeScript)
+```bash
+cd frontend
 
-## Scope boundary
+# Install node dependencies
+npm install
 
-Person A does **not** implement the full FastAPI application, agent orchestration, waste diagnosis,
-constrained batch optimizer, React dashboard, Docker deployment or hosted application. Those are
-owned by other workstreams in the project blueprint.
+# Build production bundle (Zero errors)
+npm run build
 
-## Units and accounting
+# Start Vite development server
+npm run dev
+```
 
-Quantities are measured in **portions**. For each dish/meal record:
-`consumed_qty <= served_qty <= prepared_qty`; all quantities are non-negative.
-Unserved leftovers and plate waste are separate measures and must not be double-counted.
+Open your browser to: **http://localhost:5173**
 
-See `docs/data_dictionary.md`, `docs/evaluation_protocol.md` and `docs/person_a_handover.md`.
+---
+
+## Integration & Smoke Verification
+
+To execute an automated verification of all 12 implementation steps (frontend connectivity, API guardrails, dataset generation, model training, availability, forecasting, optimization, live simulation, diagnosis, agent traces, policy evaluation, and data exports):
+
+```bash
+python scripts/person_c_smoke_test.py
+```
+
+Expected output:
+```
+======================================================================
+ ALL PERSON C INTEGRATION AND SMOKE TESTS PASSED SUCCESSFULLY! 
+======================================================================
+```
+
+---
+
+## Operational Units & Accounting Guardrails
+
+1. **Quantities are measured in Portions**:
+   - Serving quantities are calculated in discrete whole or fractional portions ($1\text{ portion} \approx 0.35\text{ kg}$).
+   - `consumed_qty <= served_qty <= prepared_qty`.
+2. **Strict Waste Categorization**:
+   - **Untouched Kitchen Leftovers**: Food prepared and kept in holding containers, never served to diners. Hygienic and potentially repurposable.
+   - **Post-Consumer Plate Waste**: Food served onto diner plates and returned unconsumed. Bio-waste scrap.
+   - **Shortage Count**: Diners arriving who could not be served due to stock exhaustion.
+3. **No Mixed Denominators**: Waste ratios are explicitly calculated against either `prepared_portions` or `served_portions` with zero-denominator safeguards.
+
+---
+
+## Key Documentation Links
+
+- [Person C Implementation Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_c_handover.md)
+- [Person C 5-7 Minute Demonstration Script](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_c_demo_script.md)
+- [Person B Backend Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_b_handover.md)
+- [Person A Data & ML Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_a_handover.md)
+- [Data Dictionary](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/data_dictionary.md)
+- [Evaluation Protocol](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/evaluation_protocol.md)

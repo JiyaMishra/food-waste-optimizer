@@ -1,0 +1,3 @@
+@echo off
+echo Building Food Waste Optimization System frontend...
+npm run build
