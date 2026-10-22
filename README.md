@@ -92,7 +92,7 @@ python -m pip install -r requirements.txt
 # Apply database migrations
 alembic -c backend/alembic.ini upgrade head
 
-# Run backend test suite (50 passing tests)
+# Run backend test suite (51 passing tests)
 pytest backend/tests -q
 pytest tests -q
 
@@ -150,9 +150,10 @@ Expected output:
 
 ## Key Documentation Links
 
-- [Person C Implementation Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_c_handover.md)
-- [Person C 5-7 Minute Demonstration Script](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_c_demo_script.md)
-- [Person B Backend Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_b_handover.md)
-- [Person A Data & ML Handover](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/person_a_handover.md)
-- [Data Dictionary](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/data_dictionary.md)
-- [Evaluation Protocol](file:///c:/Users/jainm/Downloads/food-waste-optimizer-main/food-waste-optimizer-main/docs/evaluation_protocol.md)
+- [Engineering Audit & Defect Log](docs/engineering_audit.md)
+- [Person C Implementation Handover](docs/person_c_handover.md)
+- [Person C 5-7 Minute Demonstration Script](docs/person_c_demo_script.md)
+- [Person B Backend Handover](docs/person_b_handover.md)
+- [Person A Data & ML Handover](docs/person_a_handover.md)
+- [Data Dictionary](docs/data_dictionary.md)
+- [Evaluation Protocol](docs/evaluation_protocol.md)

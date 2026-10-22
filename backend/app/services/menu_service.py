@@ -104,10 +104,17 @@ def upsert_menu(db: Session) -> int:
     return count
 
 
-def list_dishes(db: Session, meal_type: str | None = None, category: str | None = None) -> list[Dish]:
+def list_dishes(
+    db: Session,
+    meal_type: str | None = None,
+    category: str | None = None,
+    vegetarian_flag: bool | None = None,
+) -> list[Dish]:
     stmt = select(Dish).order_by(Dish.external_id)
     if meal_type:
         stmt = stmt.where(Dish.meal_type == meal_type)
     if category:
         stmt = stmt.where(Dish.category == category)
+    if vegetarian_flag is not None:
+        stmt = stmt.where(Dish.vegetarian_flag == vegetarian_flag)
     return list(db.scalars(stmt).all())

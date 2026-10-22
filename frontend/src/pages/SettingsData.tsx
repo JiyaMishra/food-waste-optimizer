@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Settings,
   Database,
@@ -7,7 +7,6 @@ import {
   Play,
   RotateCw,
   CheckCircle,
-  AlertCircle,
   FileSpreadsheet,
   FileCode,
   HardDrive,
@@ -15,7 +14,6 @@ import {
 } from 'lucide-react';
 import { api, API_BASE_URL } from '../api/client';
 import { MetricCard } from '../components/MetricCard';
-import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import type { HealthResponse, MealRun, ReadinessResponse } from '../types';
@@ -36,7 +34,7 @@ export const SettingsData: React.FC = () => {
   const [seed, setSeed] = useState<number>(42);
   const [residents, setResidents] = useState<number>(200);
 
-  const loadStatus = async () => {
+  const loadStatus = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -59,11 +57,11 @@ export const SettingsData: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedExportRunId]);
 
   useEffect(() => {
     loadStatus();
-  }, []);
+  }, [loadStatus]);
 
   const handleGenerateData = async () => {
     setActionLoading('generate');

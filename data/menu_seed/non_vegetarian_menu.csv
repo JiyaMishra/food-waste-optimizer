@@ -1,0 +1,20 @@
+dish_id,dish_name,category,meal_type,vegetarian_flag,default_unit,typical_portion_size,prep_lead_minutes,batch_min,batch_max,kitchen_capacity_per_interval,menu_source,source_date,is_synthetic
+D054,Fried Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,400,180,vit_august_2026_non_veg_menu,2026-08-01,true
+D055,Egg Burji (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-02,true
+D056,French Toast,breakfast,breakfast,false,portions,2.0,25,20,350,160,vit_august_2026_non_veg_menu,2026-08-03,true
+D057,Scrambled Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,400,180,vit_august_2026_non_veg_menu,2026-08-06,true
+D058,Boiled Fried Eggs (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-07,true
+D059,Omelette (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,350,160,vit_august_2026_non_veg_menu,2026-08-09,true
+D060,Fried Egg Masala,breakfast,breakfast,false,portions,2.0,25,20,350,160,vit_august_2026_non_veg_menu,2026-08-10,true
+D061,Masala Egg Burji (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-12,true
+D062,Boiled Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,450,200,vit_august_2026_non_veg_menu,2026-08-13,true
+D063,Chicken Biryani,lunch,lunch,false,portions,1.0,60,30,750,260,vit_august_2026_non_veg_menu,2026-08-02,true
+D064,Egg Manchurian (Dry),lunch,lunch,false,portions,1.0,40,20,600,220,vit_august_2026_non_veg_menu,2026-08-03,true
+D065,Chicken Tikka Masala,lunch,lunch,false,portions,1.0,50,25,700,250,vit_august_2026_non_veg_menu,2026-08-05,true
+D066,Fish Fry,lunch,lunch,false,portions,2.0,45,20,600,230,vit_august_2026_non_veg_menu,2026-08-06,true
+D067,Tandoori Chicken,lunch,lunch,false,portions,1.0,55,25,700,240,vit_august_2026_non_veg_menu,2026-08-07,true
+D068,Kadai Chicken,lunch,lunch,false,portions,1.0,45,25,700,240,vit_august_2026_non_veg_menu,2026-08-10,true
+D069,Chicken Hariyali,lunch,lunch,false,portions,1.0,50,25,650,230,vit_august_2026_non_veg_menu,2026-08-12,true
+D070,Chicken 65,lunch,lunch,false,portions,1.0,45,25,700,250,vit_august_2026_non_veg_menu,2026-08-14,true
+D071,Egg Puff,snacks,snacks,false,portions,1.0,30,20,450,200,vit_august_2026_non_veg_menu,2026-08-02,true
+D072,Egg Fried Rice,dinner,dinner,false,portions,1.0,35,20,650,240,vit_august_2026_non_veg_menu,2026-08-01,true

@@ -8,7 +8,7 @@ from src.ml.forecasting import train_model
 
 ops = pd.read_csv("data/generated/food_operations.csv", parse_dates=["date"])
 # A training cutoff is exclusive, so advance one day to include the final observed date.
-features = build_features(ops, forecast_cutoff=ops["date"].max() + pd.Timedelta(days=1))
+features = build_features(ops, forecast_cutoff=ops["date"].max() + pd.DateOffset(days=1))
 artifact = train_model(features)
 print(f"Saved {artifact['model_version']} trained through {artifact['training_cutoff']}; "
       f"selected={artifact['selected_model']}; "

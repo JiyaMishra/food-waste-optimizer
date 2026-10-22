@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Award,
   TrendingDown,
   Percent,
   CheckCircle,
-  HelpCircle,
   Scale,
   RefreshCw,
   Zap,
@@ -34,7 +33,7 @@ export const Evaluation: React.FC<EvaluationProps> = ({
   const [baselineRunId, setBaselineRunId] = useState<string>('');
   const [contextRunId, setContextRunId] = useState<string>('');
 
-  const loadEvaluationData = async () => {
+  const loadEvaluationData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -60,7 +59,7 @@ export const Evaluation: React.FC<EvaluationProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const runEvaluationComparison = async () => {
     if (!baselineRunId || !contextRunId) return;
@@ -114,7 +113,7 @@ export const Evaluation: React.FC<EvaluationProps> = ({
 
   useEffect(() => {
     loadEvaluationData();
-  }, [selectedDate, selectedMeal]);
+  }, [loadEvaluationData, selectedDate, selectedMeal]);
 
   const bMetrics = (comparison?.baseline?.metrics || {}) as Record<string, unknown>;
   const cMetrics = (comparison?.context?.metrics || {}) as Record<string, unknown>;

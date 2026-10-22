@@ -70,7 +70,7 @@ def generate_synthetic_data(output_dir="data/generated", months=6, seed=42, resi
                 cumulative += int(amount)
                 interval = ["07:00","07:30","08:00","08:30"][j] if meal=="breakfast" else \
                            (["12:00","12:30","13:00","13:30"][j] if meal=="lunch" else \
-                           (["16:00","16:30","17:00","17:30"][j] if meal=="snacks" else
+                           (["16:30","17:00","17:30","18:00"][j] if meal=="snacks" else
                             ["19:00","19:30","20:00","20:30"][j]))
                 attendance_rows.append({"meal_id":meal_id,"date":date.date().isoformat(),"meal_type":meal,
                                         "interval_start":interval,"arrivals":int(amount),
@@ -87,8 +87,9 @@ def generate_synthetic_data(output_dir="data/generated", months=6, seed=42, resi
                     "dish_id":d["dish_id"],"prepared_qty":prepared,"served_qty":served,
                     "consumed_qty":consumed,"untouched_leftover":prepared-served,
                     "plate_waste":served-consumed,"demand_qty":demand,"unit":"portions",**meta})
+                is_veg = bool(str(d.get("vegetarian_flag", "true")).strip().lower() in ("true", "1", "yes"))
                 menu_rows.append({"date":date.date().isoformat(),"meal_id":meal_id,"meal_type":meal,
-                                  "dish_id":d["dish_id"],"dish_name":d["dish_name"],"vegetarian_flag":True,**meta})
+                                  "dish_id":d["dish_id"],"dish_name":d["dish_name"],"vegetarian_flag":is_veg,**meta})
     pd.DataFrame(state_rows).to_csv(out/"hostel_daily_state.csv",index=False)
     pd.DataFrame(slot_rows).to_csv(out/"academic_slots.csv",index=False)
     pd.DataFrame(event_rows, columns=["event_id","date","start_time","end_time","event_type","expected_participants",

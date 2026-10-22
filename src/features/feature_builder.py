@@ -19,7 +19,7 @@ def build_features(operations, forecast_cutoff=None):
         df[col] = pd.to_numeric(df[col], errors="raise")
         if (df[col] < 0).any():
             raise ValueError(f"{col} cannot contain negative values")
-    cutoff = pd.Timestamp(forecast_cutoff).normalize() if forecast_cutoff is not None else df["date"].max() + pd.Timedelta(days=1)
+    cutoff = pd.Timestamp(forecast_cutoff).normalize() if forecast_cutoff is not None else df["date"].max() + pd.DateOffset(days=1)
     hist = df.loc[df["date"] < cutoff].copy()
     if hist.empty:
         raise ValueError("No historical rows exist before forecast_cutoff")

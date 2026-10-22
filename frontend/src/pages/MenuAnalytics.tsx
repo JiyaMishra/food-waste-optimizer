@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  PieChart,
   TrendingDown,
   Repeat,
   Heart,
@@ -26,8 +25,9 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
   const [dishes, setDishes] = useState<Dish[]>([]);
   const [runs, setRuns] = useState<MealRun[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [dietaryFilter, setDietaryFilter] = useState<'all' | 'veg' | 'non_veg'>('all');
 
-  const loadMenuAnalytics = async () => {
+  const loadMenuAnalytics = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -43,11 +43,11 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedMeal]);
 
   useEffect(() => {
     loadMenuAnalytics();
-  }, [selectedMeal]);
+  }, [loadMenuAnalytics]);
 
   if (loading) {
     return <LoadingState message="Aggregating dish acceptance and historical waste trends..." />;
@@ -86,11 +86,17 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
     };
   });
 
-  const filteredDishes = dishStats.filter(
-    (item) =>
+  const filteredDishes = dishStats.filter((item) => {
+    const matchesSearch =
       item.dish.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.dish.external_id.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      item.dish.external_id.toLowerCase().includes(searchQuery.toLowerCase());
+    const isVeg = item.dish.vegetarian_flag !== false;
+    const matchesDietary =
+      dietaryFilter === 'all' ||
+      (dietaryFilter === 'veg' && isVeg) ||
+      (dietaryFilter === 'non_veg' && !isVeg);
+    return matchesSearch && matchesDietary;
+  });
 
   return (
     <div className="page-container">
@@ -158,23 +164,49 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
 
       {/* Filter and Table */}
       <div className="card-panel">
-        <div className="panel-header">
+        <div className="panel-header flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <h4 className="panel-title">Dish Performance Matrix</h4>
             <p className="panel-subtitle">
-              Demand elasticity, popularity index, and waste risk across dishes
+              Demand elasticity, popularity index, and waste risk across dishes • Vellore Institute of Technology Ladies Hostel (August 2026)
             </p>
           </div>
 
-          <div className="search-input-box">
-            <Search size={15} className="text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search dish by name or ID..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
-            />
+          <div className="flex items-center gap-2">
+            <div className="flex rounded-md p-0.5 bg-slate-800 border border-slate-700">
+              <button
+                type="button"
+                className={`px-3 py-1 text-xs font-medium rounded ${dietaryFilter === 'all' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                onClick={() => setDietaryFilter('all')}
+              >
+                All Dishes ({dishes.length})
+              </button>
+              <button
+                type="button"
+                className={`px-3 py-1 text-xs font-medium rounded ${dietaryFilter === 'veg' ? 'bg-emerald-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                onClick={() => setDietaryFilter('veg')}
+              >
+                Veg Only ({dishes.filter(d => d.vegetarian_flag !== false).length})
+              </button>
+              <button
+                type="button"
+                className={`px-3 py-1 text-xs font-medium rounded ${dietaryFilter === 'non_veg' ? 'bg-rose-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                onClick={() => setDietaryFilter('non_veg')}
+              >
+                Non-Veg ({dishes.filter(d => d.vegetarian_flag === false).length})
+              </button>
+            </div>
+
+            <div className="search-input-box">
+              <Search size={15} className="text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search dish by name or ID..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
+            </div>
           </div>
         </div>
 
@@ -183,6 +215,7 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
             <thead>
               <tr>
                 <th>Dish Name</th>
+                <th>Diet</th>
                 <th>External ID</th>
                 <th>Category</th>
                 <th>Popularity Index</th>
@@ -197,6 +230,17 @@ export const MenuAnalytics: React.FC<MenuAnalyticsProps> = ({ selectedMeal }) =>
                 <tr key={item.dish.external_id}>
                   <td>
                     <strong>{item.dish.name}</strong>
+                  </td>
+                  <td>
+                    {item.dish.vegetarian_flag !== false ? (
+                      <span className="px-2 py-0.5 text-xs font-semibold rounded bg-emerald-950/80 border border-emerald-600/60 text-emerald-300">
+                        Veg
+                      </span>
+                    ) : (
+                      <span className="px-2 py-0.5 text-xs font-semibold rounded bg-rose-950/80 border border-rose-600/60 text-rose-300">
+                        Non-Veg
+                      </span>
+                    )}
                   </td>
                   <td>
                     <code>{item.dish.external_id}</code>

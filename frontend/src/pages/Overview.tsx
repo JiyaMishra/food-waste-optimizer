@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Users,
   Utensils,
@@ -6,9 +6,7 @@ import {
   ShieldAlert,
   Play,
   RotateCw,
-  Clock,
   ArrowRight,
-  TrendingDown,
   Activity,
 } from 'lucide-react';
 import { api } from '../api/client';
@@ -46,7 +44,7 @@ export const Overview: React.FC<OverviewProps> = ({
   const [forecast, setForecast] = useState<ForecastResponse | null>(null);
   const [latestRuns, setLatestRuns] = useState<MealRun[]>([]);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -74,7 +72,6 @@ export const Overview: React.FC<OverviewProps> = ({
       if (fcastRes.status === 'fulfilled') setForecast(fcastRes.value);
       if (runsRes.status === 'fulfilled') setLatestRuns(runsRes.value.items);
 
-      // If all failed, check error
       if (
         ctxRes.status === 'rejected' &&
         availRes.status === 'rejected' &&
@@ -87,16 +84,15 @@ export const Overview: React.FC<OverviewProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate, selectedMeal]);
 
   useEffect(() => {
     loadData();
-  }, [selectedDate, selectedMeal]);
+  }, [loadData]);
 
   const handleStartRun = async () => {
     setStartingRun(true);
     try {
-      // Trigger full planning workflow via agent orchestrator
       await api.runPlanningAgent({
         service_date: selectedDate,
         meal_type: selectedMeal,
@@ -108,8 +104,6 @@ export const Overview: React.FC<OverviewProps> = ({
         batch_max: 500,
         kitchen_capacity: 500,
         prep_lead_minutes: 30,
-        service_start: '07:00',
-        service_close: '10:00',
         persist: true,
       });
       await loadData();
@@ -146,39 +140,59 @@ export const Overview: React.FC<OverviewProps> = ({
   const primaryDishForecast = forecast?.rows?.[0];
   const totalPredictedPortions = forecast?.rows
     ? forecast.rows.reduce((sum, r) => sum + r.prediction, 0)
-    : 0;
+    : (availability?.expected_arrivals ?? 280);
 
-  // Timeline preview
-  const sampleTimelineData = [
-    {
-      time: '07:00',
-      arrivals: totalPredictedPortions * 0.15,
-      expected: totalPredictedPortions * 0.15,
-      rushClass: 'low' as const,
-      contextNote: 'Early arrival wave; morning joggers and early lab students',
+  // Interval timeline tailored to meal type
+  const mealIntervalConfigs: Record<MealType, { times: string[]; notes: string[] }> = {
+    breakfast: {
+      times: ['07:00', '07:30', '08:00', '08:30'],
+      notes: [
+        'Early morning sports & early lab cohort arrivals',
+        'Peak breakfast rush ahead of 08:00 AM lectures',
+        'Secondary arrival wave for 09:00 AM classes',
+        'Late breakfast service wind-down before 09:30 close',
+      ],
     },
-    {
-      time: '07:30',
-      arrivals: totalPredictedPortions * 0.35,
-      expected: totalPredictedPortions * 0.32,
-      rushClass: 'high' as const,
-      contextNote: 'Peak breakfast rush ahead of 08:00 AM lectures',
+    lunch: {
+      times: ['12:00', '12:30', '13:00', '13:30'],
+      notes: [
+        'Early lunch cohort release from morning blocks',
+        'Peak lunch rush across academic hostels',
+        'Secondary afternoon laboratory arrivals',
+        'Afternoon service close before 14:00',
+      ],
     },
-    {
-      time: '08:00',
-      arrivals: totalPredictedPortions * 0.3,
-      expected: totalPredictedPortions * 0.33,
-      rushClass: 'normal' as const,
-      contextNote: 'Secondary breakfast influx',
+    snacks: {
+      times: ['16:30', '17:00', '17:30', '18:00'],
+      notes: [
+        'Evening tea kickoff & snack arrival surge (4:30 PM)',
+        'Peak snack and beverage rush after lab completions',
+        'Post-sports and evening study cohort arrivals',
+        'Snack window close before 18:15',
+      ],
     },
-    {
-      time: '08:30',
-      arrivals: totalPredictedPortions * 0.2,
-      expected: totalPredictedPortions * 0.2,
-      rushClass: 'low' as const,
-      contextNote: 'Late service wind-down before 09:30 close',
+    dinner: {
+      times: ['19:00', '19:30', '20:00', '20:30'],
+      notes: [
+        'Early diner influx from campus sports/library',
+        'Core dinner rush across residential blocks',
+        'Secondary evening diner wave',
+        'Night service wind-down before 21:00 close',
+      ],
     },
-  ];
+  };
+
+  const currentMealConfig = mealIntervalConfigs[selectedMeal];
+  const intervalShares = [0.18, 0.38, 0.28, 0.16];
+  const rushClasses: Array<'low' | 'normal' | 'high'> = ['low', 'high', 'normal', 'low'];
+
+  const sampleTimelineData = currentMealConfig.times.map((t, idx) => ({
+    time: t,
+    arrivals: totalPredictedPortions * intervalShares[idx],
+    expected: totalPredictedPortions * intervalShares[idx],
+    rushClass: rushClasses[idx],
+    contextNote: currentMealConfig.notes[idx],
+  }));
 
   return (
     <div className="page-container">

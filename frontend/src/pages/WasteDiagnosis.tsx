@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Stethoscope,
   AlertTriangle,
@@ -36,7 +36,7 @@ export const WasteDiagnosis: React.FC<WasteDiagnosisProps> = ({
   const [selectedRunId, setSelectedRunId] = useState<string>('');
   const [expandedCauseIdx, setExpandedCauseIdx] = useState<number | null>(0);
 
-  const loadDiagnoses = async () => {
+  const loadDiagnoses = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -56,7 +56,7 @@ export const WasteDiagnosis: React.FC<WasteDiagnosisProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedRunId]);
 
   const runPostMealDiagnosis = async () => {
     if (!selectedRunId) return;
@@ -74,11 +74,29 @@ export const WasteDiagnosis: React.FC<WasteDiagnosisProps> = ({
   const runPreMealDiagnosis = async () => {
     setLoading(true);
     try {
+      const fcast = await api.getForecasts({
+        date: selectedDate,
+        meal_type: selectedMeal,
+        persist: false,
+      });
+
+      const forecasts = (fcast.rows || []).map((r) => ({
+        dish_id: r.dish_id,
+        prediction: r.prediction,
+        lower_bound: r.lower_bound,
+        upper_bound: r.upper_bound,
+      }));
+
+      const planned = (fcast.rows || []).map((r) => ({
+        dish_id: r.dish_id,
+        prepared_qty: Math.round(r.prediction * 1.15),
+      }));
+
       await api.diagnosePreMeal({
         service_date: selectedDate,
         meal_type: selectedMeal,
-        forecasts: [{ dish_id: 'D001', prediction: 288, lower_bound: 184, upper_bound: 346 }],
-        planned_quantities: [{ dish_id: 'D001', prepared_qty: 380 }],
+        forecasts: forecasts.length > 0 ? forecasts : [{ dish_id: 'D001', prediction: 288, lower_bound: 184, upper_bound: 346 }],
+        planned_quantities: planned.length > 0 ? planned : [{ dish_id: 'D001', prepared_qty: 380 }],
         historical_waste_rate: 0.12,
         persist: true,
       });
@@ -92,7 +110,7 @@ export const WasteDiagnosis: React.FC<WasteDiagnosisProps> = ({
 
   useEffect(() => {
     loadDiagnoses();
-  }, [selectedDate, selectedMeal]);
+  }, [selectedDate, selectedMeal, loadDiagnoses]);
 
   if (loading) {
     return <LoadingState message="Fetching evidence-based waste diagnoses and causation records..." />;

@@ -15,6 +15,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from contextlib import asynccontextmanager
+
 from backend.app.api.v1 import health
 from backend.app.api.v1.router import router as api_v1_router
 from backend.app.core.config import get_settings
@@ -24,6 +26,17 @@ from backend.app.core.logging import configure_logging, request_id_ctx
 settings = get_settings()
 configure_logging(settings.log_level)
 logger = logging.getLogger("food_optimizer.api")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    settings.ensure_directories()
+    logger.info(
+        "backend_started",
+        extra={"stage": "startup"},
+    )
+    yield
+
 
 app = FastAPI(
     title=settings.app_name,
@@ -35,6 +48,7 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -44,15 +58,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-def startup() -> None:
-    settings.ensure_directories()
-    logger.info(
-        "backend_started",
-        extra={"stage": "startup"},
-    )
 
 
 @app.middleware("http")

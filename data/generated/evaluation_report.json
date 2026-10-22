@@ -1,0 +1,44 @@
+{
+  "train_period": "2026-07-04 to 2026-08-01",
+  "test_period": "2026-08-02 to 2026-08-31",
+  "context_mae": 6.884038320709788,
+  "context_rmse": 8.579741247892816,
+  "baseline_mae": 7.065486111111111,
+  "baseline_rmse": 8.836151345571885,
+  "test_rows": 2160,
+  "seed": 42,
+  "model_version": "context-rf-v4",
+  "features": [
+    "weekday",
+    "month",
+    "demand_lag_1",
+    "demand_rolling_7",
+    "meal_type",
+    "dish_id"
+  ],
+  "target_unit": "portions",
+  "context_beats_baseline_mae": true,
+  "caveat": "Synthetic data only; scores do not establish real-world waste reduction.",
+  "by_meal_type": {
+    "breakfast": {
+      "rows": 660,
+      "context_mae": 5.354170182851033,
+      "baseline_mae": 5.681136363636364
+    },
+    "dinner": {
+      "rows": 450,
+      "context_mae": 9.482846298981126,
+      "baseline_mae": 9.331111111111111
+    },
+    "lunch": {
+      "rows": 660,
+      "context_mae": 7.199383082992956,
+      "baseline_mae": 7.41659090909091
+    },
+    "snacks": {
+      "rows": 390,
+      "context_mae": 5.940760981370778,
+      "baseline_mae": 6.199871794871794
+    }
+  }
+}

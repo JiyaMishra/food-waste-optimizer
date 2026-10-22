@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Flame,
   Play,
   SkipForward,
   CheckCircle,
-  RotateCcw,
   Zap,
   Clock,
   Layers,
   ShieldCheck,
-  AlertOctagon,
-  TrendingDown,
-  Info,
+  Utensils,
 } from 'lucide-react';
 import { api } from '../api/client';
 import { MetricCard } from '../components/MetricCard';
 import { StatusBadge } from '../components/StatusBadge';
-import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import { StockFlowChart } from '../charts/StockFlowChart';
-import type { MealRun, MealType, Outcome, SimulationEvent } from '../types';
+import type { Dish, MealRun, MealType, Outcome, SimulationEvent } from '../types';
 
 interface KitchenSimulationProps {
   selectedDate: string;
@@ -35,6 +31,10 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
+  // Available dishes for current meal
+  const [dishes, setDishes] = useState<Dish[]>([]);
+  const [selectedDishId, setSelectedDishId] = useState<string>('D001');
+
   // Active simulation run state
   const [activeRun, setActiveRun] = useState<MealRun | null>(null);
   const [events, setEvents] = useState<SimulationEvent[]>([]);
@@ -49,14 +49,25 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
   const [reserveQty, setReserveQty] = useState<number>(100);
   const [triggerQty, setTriggerQty] = useState<number>(80);
 
-  // Load latest run on mount if any
-  const loadLatestRun = async () => {
+  // Load menu dishes and latest run
+  const loadInitialData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const runs = await api.listSimulationRuns({ limit: 1 });
-      if (runs.items && runs.items.length > 0) {
-        const runId = runs.items[0].id;
+      const [menuRes, runsRes] = await Promise.allSettled([
+        api.getMenu({ meal_type: selectedMeal }),
+        api.listSimulationRuns({ limit: 1 }),
+      ]);
+
+      if (menuRes.status === 'fulfilled' && menuRes.value.items.length > 0) {
+        setDishes(menuRes.value.items);
+        if (!selectedDishId || !menuRes.value.items.some((d) => d.external_id === selectedDishId)) {
+          setSelectedDishId(menuRes.value.items[0].external_id);
+        }
+      }
+
+      if (runsRes.status === 'fulfilled' && runsRes.value.items.length > 0) {
+        const runId = runsRes.value.items[0].id;
         const detail = await api.getSimulationRun(runId);
         setActiveRun(detail.run);
         setEvents(detail.events || []);
@@ -67,11 +78,11 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedMeal, selectedDishId]);
 
   useEffect(() => {
-    loadLatestRun();
-  }, []);
+    loadInitialData();
+  }, [loadInitialData]);
 
   // Action: Start new simulation
   const handleStartSimulation = async () => {
@@ -81,7 +92,7 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
       const res = await api.startSimulation({
         service_date: selectedDate,
         meal_type: selectedMeal,
-        dish_external_id: 'D001',
+        dish_external_id: selectedDishId || 'D001',
         policy: policyType,
         use_historical: true,
         historical_date: '2026-08-31',
@@ -93,7 +104,7 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
         capacity: 500,
         consumption_rate: 0.85,
         prep_lead_intervals: 1,
-        forecast_expected: 288,
+        forecast_expected: initialQty * 0.8,
         persist: true,
       });
 
@@ -155,7 +166,7 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
       const comp = await api.compareSimulations({
         service_date: selectedDate,
         meal_type: selectedMeal,
-        dish_external_id: 'D001',
+        dish_external_id: selectedDishId || 'D001',
         use_historical: true,
         historical_date: '2026-08-31',
         capacity: 500,
@@ -202,11 +213,31 @@ export const KitchenSimulation: React.FC<KitchenSimulationProps> = ({
         </div>
       </div>
 
-      {error && <ErrorState error={error} onRetry={loadLatestRun} />}
+      {error && <ErrorState error={error} onRetry={loadInitialData} />}
 
       {/* Control Panel Strip */}
       <div className="card-panel simulation-controls-strip">
         <div className="controls-left">
+          {dishes.length > 0 && (
+            <div className="control-group">
+              <span className="control-label">
+                <Utensils size={14} className="inline mr-1" /> Dish:
+              </span>
+              <select
+                className="select-meal"
+                value={selectedDishId}
+                onChange={(e) => setSelectedDishId(e.target.value)}
+                disabled={isRunning || advancing}
+              >
+                {dishes.map((d) => (
+                  <option key={d.external_id} value={d.external_id}>
+                    {d.external_id} - {d.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
           <div className="control-group">
             <span className="control-label">Policy Model:</span>
             <select

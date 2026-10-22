@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  TrendingUp,
   Clock,
-  AlertTriangle,
-  Info,
-  Calendar,
   CloudRain,
   GraduationCap,
-  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import { api } from '../api/client';
 import { ArrivalsTimelineChart, TimelineIntervalData } from '../charts/ArrivalsTimelineChart';
@@ -22,18 +18,28 @@ interface RushTimelineProps {
   onNavigate: (page: string) => void;
 }
 
+const defaultIntervalsByMeal: Record<MealType, string> = {
+  breakfast: '07:30',
+  lunch: '12:30',
+  snacks: '16:30',
+  dinner: '19:30',
+};
+
 export const RushTimeline: React.FC<RushTimelineProps> = ({
   selectedDate,
   selectedMeal,
+  onNavigate,
 }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   const [forecast, setForecast] = useState<ForecastResponse | null>(null);
   const [context, setContext] = useState<SyntheticContext | null>(null);
-  const [selectedIntervalTime, setSelectedIntervalTime] = useState<string>('07:30');
+  const [selectedIntervalTime, setSelectedIntervalTime] = useState<string>(
+    defaultIntervalsByMeal[selectedMeal] || '07:30'
+  );
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -43,16 +49,17 @@ export const RushTimeline: React.FC<RushTimelineProps> = ({
       ]);
       setForecast(fRes);
       setContext(cRes);
+      setSelectedIntervalTime(defaultIntervalsByMeal[selectedMeal] || '07:30');
     } catch (err) {
       setError(err as Error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate, selectedMeal]);
 
   useEffect(() => {
     loadData();
-  }, [selectedDate, selectedMeal]);
+  }, [loadData]);
 
   if (loading) {
     return <LoadingState message="Loading arrival intervals and context rationale..." />;
@@ -137,32 +144,32 @@ export const RushTimeline: React.FC<RushTimelineProps> = ({
     ],
     snacks: [
       {
-        time: '16:00',
-        share: 0.25,
-        rush: 'normal',
-        note: 'Evening tea kickoff',
-        factor: 'Classroom release',
-      },
-      {
         time: '16:30',
-        share: 0.45,
-        rush: 'high',
-        note: 'Peak snacks rush after afternoon lab completions',
-        factor: 'Full hostel attendance',
+        share: 0.35,
+        rush: 'normal',
+        note: 'Evening tea kickoff & snack arrival surge (4:30 PM start)',
+        factor: 'Classroom release & tea kickoff',
       },
       {
         time: '17:00',
-        share: 0.2,
-        rush: 'low',
-        note: 'Post-sports intake',
-        factor: 'Playground crowd',
+        share: 0.40,
+        rush: 'high',
+        note: 'Peak snacks rush after afternoon lab completions',
+        factor: 'Full hostel attendance wave',
       },
       {
         time: '17:30',
-        share: 0.1,
+        share: 0.15,
         rush: 'low',
-        note: 'Snacks wrap-up',
-        factor: 'Service transition',
+        note: 'Post-sports intake & evening study diners',
+        factor: 'Playground & library crowd',
+      },
+      {
+        time: '18:00',
+        share: 0.10,
+        rush: 'low',
+        note: 'Snacks wrap-up before 18:15 close',
+        factor: 'Service transition to dinner prep',
       },
     ],
     dinner: [
@@ -294,6 +301,17 @@ export const RushTimeline: React.FC<RushTimelineProps> = ({
                 : 'Favorable weather; standard punctuality pattern'}
             </p>
           </div>
+        </div>
+
+        <div className="mt-4 flex justify-end">
+          <button
+            type="button"
+            className="btn btn--secondary"
+            onClick={() => onNavigate('meal-planner')}
+          >
+            <span>Align Batch Plan with This Rush Profile</span>
+            <ArrowRight size={15} />
+          </button>
         </div>
       </div>
     </div>

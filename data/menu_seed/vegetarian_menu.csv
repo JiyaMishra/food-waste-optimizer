@@ -1,10 +1,73 @@
 dish_id,dish_name,category,meal_type,vegetarian_flag,default_unit,typical_portion_size,prep_lead_minutes,batch_min,batch_max,kitchen_capacity_per_interval,menu_source,source_date,is_synthetic
-D001,Idli,breakfast,breakfast,true,portions,2,45,20,500,180,starter_seed,2026-08-01,true
-D002,Dosa,breakfast,breakfast,true,portions,1,35,20,500,160,starter_seed,2026-08-01,true
-D003,Upma,breakfast,breakfast,true,portions,1,30,20,500,160,starter_seed,2026-08-01,true
-D004,Sambar,lunch,lunch,true,portions,1,40,20,700,220,starter_seed,2026-08-01,true
-D005,Rice,lunch,lunch,true,portions,1,35,20,700,250,starter_seed,2026-08-01,true
-D006,Chapathi,lunch,lunch,true,portions,2,45,20,700,200,starter_seed,2026-08-01,true
-D007,Vegetable snack,snacks,snacks,true,portions,1,30,10,400,150,starter_seed,2026-08-01,true
-D008,Curd rice,dinner,dinner,true,portions,1,30,20,600,180,starter_seed,2026-08-01,true
-D009,Poriyal,dinner,dinner,true,portions,1,35,20,600,160,starter_seed,2026-08-01,true
+D001,Idly Sambar Vada,breakfast,breakfast,true,portions,2.0,35,20,600,220,vit_august_2026_veg_menu,2026-08-04,true
+D002,Thin Masala Dosa,breakfast,breakfast,true,portions,1.0,30,20,500,160,vit_august_2026_veg_menu,2026-08-05,true
+D003,Semiya Upma Kitchadi,breakfast,breakfast,true,portions,1.0,25,20,500,180,vit_august_2026_veg_menu,2026-08-06,true
+D004,Sambar Dal Maharani,lunch,lunch,true,portions,1.0,40,20,700,240,vit_august_2026_veg_menu,2026-08-01,true
+D005,White Rice Veg Biryani,lunch,lunch,true,portions,1.0,35,20,700,250,vit_august_2026_veg_menu,2026-08-02,true
+D006,Phulka Chapathi,lunch,lunch,true,portions,2.0,35,20,700,220,vit_august_2026_veg_menu,2026-08-01,true
+D007,Samosa Chat Veg Puffs,snacks,snacks,true,portions,1.0,30,10,400,180,vit_august_2026_veg_menu,2026-08-01,true
+D008,Curd Rice Rajma Masala,dinner,dinner,true,portions,1.0,30,20,600,200,vit_august_2026_veg_menu,2026-08-01,true
+D009,Beetroot Poriyal Gobi Masala,dinner,dinner,true,portions,1.0,35,20,600,180,vit_august_2026_veg_menu,2026-08-06,true
+D010,Aloo Paratha with Curd,breakfast,breakfast,true,portions,2.0,40,20,500,200,vit_august_2026_veg_menu,2026-08-01,true
+D011,Paav Bhaji & Pongal,breakfast,breakfast,true,portions,2.0,35,20,550,200,vit_august_2026_veg_menu,2026-08-02,true
+D012,Poori Aloo Masala,breakfast,breakfast,true,portions,3.0,40,20,600,240,vit_august_2026_veg_menu,2026-08-03,true
+D013,Gobi Paratha with Pickle,breakfast,breakfast,true,portions,2.0,40,20,500,200,vit_august_2026_veg_menu,2026-08-06,true
+D014,Podi Dosa Chutney,breakfast,breakfast,true,portions,1.0,30,20,500,160,vit_august_2026_veg_menu,2026-08-07,true
+D015,Mixed Veg Paratha,breakfast,breakfast,true,portions,2.0,40,20,500,200,vit_august_2026_veg_menu,2026-08-08,true
+D016,Podi Idly & Vada,breakfast,breakfast,true,portions,3.0,35,20,600,220,vit_august_2026_veg_menu,2026-08-09,true
+D017,Poha Namkeen & Mint Chutney,breakfast,breakfast,true,portions,1.0,25,20,500,180,vit_august_2026_veg_menu,2026-08-10,true
+D018,Paneer Paratha & Curd,breakfast,breakfast,true,portions,2.0,40,20,500,200,vit_august_2026_veg_menu,2026-08-13,true
+D019,Kal Dosa & Vadacurry,breakfast,breakfast,true,portions,2.0,35,20,500,180,vit_august_2026_veg_menu,2026-08-14,true
+D020,Dal Maharani & Aloo Capsicum,lunch,lunch,true,portions,1.0,40,20,650,220,vit_august_2026_veg_menu,2026-08-01,true
+D021,Veg Biryani & Banaras Baigan,lunch,lunch,true,portions,1.0,50,30,700,250,vit_august_2026_veg_menu,2026-08-02,true
+D022,Fried Rice & Dragon Paneer,lunch,lunch,true,portions,1.0,45,20,600,240,vit_august_2026_veg_menu,2026-08-03,true
+D023,Bisibilla Bath & Kadi Pakoda,lunch,lunch,true,portions,1.0,45,20,650,230,vit_august_2026_veg_menu,2026-08-04,true
+D024,Paneer Hariyali & Dal Lasoni,lunch,lunch,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-05,true
+D025,Peas Pulav & Veg Shahi Masala,lunch,lunch,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-06,true
+D026,Paneer Tikka Masala & Dal Rajasthani,lunch,lunch,true,portions,1.0,45,20,650,230,vit_august_2026_veg_menu,2026-08-07,true
+D027,Kara Kozhambu & Keerai Kootu,lunch,lunch,true,portions,1.0,35,20,550,200,vit_august_2026_veg_menu,2026-08-08,true
+D028,Kadai Paneer & Dal Fry,lunch,lunch,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-10,true
+D029,Cabbage Muttar & Paneer Hariyali,lunch,lunch,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-12,true
+D030,Mutter Masala & Raw Banana Poriyal,lunch,lunch,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-13,true
+D031,Raw Banana Bajji & Chutney,snacks,snacks,true,portions,2.0,30,20,450,200,vit_august_2026_veg_menu,2026-08-03,true
+D032,Veg Samosa & Imly Sauce,snacks,snacks,true,portions,2.0,30,20,450,200,vit_august_2026_veg_menu,2026-08-04,true
+D033,Dahi Papdi Chat,snacks,snacks,true,portions,1.0,25,15,400,180,vit_august_2026_veg_menu,2026-08-05,true
+D034,Black Channa Sundal,snacks,snacks,true,portions,1.0,25,15,400,180,vit_august_2026_veg_menu,2026-08-06,true
+D035,Brownie Cake,snacks,snacks,true,portions,1.0,20,10,400,160,vit_august_2026_veg_menu,2026-08-07,true
+D036,French Fries & Sauce,snacks,snacks,true,portions,1.0,25,20,400,180,vit_august_2026_veg_menu,2026-08-08,true
+D037,Pani Poori,snacks,snacks,true,portions,6.0,25,20,500,220,vit_august_2026_veg_menu,2026-08-09,true
+D038,Masala Peanuts,snacks,snacks,true,portions,1.0,15,10,350,150,vit_august_2026_veg_menu,2026-08-10,true
+D039,Pizza & Cold Badam Milk,snacks,snacks,true,portions,1.0,30,15,400,180,vit_august_2026_veg_menu,2026-08-12,true
+D040,Mysore Bonda & Chutney,snacks,snacks,true,portions,2.0,30,20,450,200,vit_august_2026_veg_menu,2026-08-13,true
+D041,Eggless Cake,snacks,snacks,true,portions,1.0,20,10,400,160,vit_august_2026_veg_menu,2026-08-14,true
+D042,Rajma Masala & Gobi Manchurian,dinner,dinner,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-01,true
+D043,Aloo Gobi Peas Masala & Phulka,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-02,true
+D044,Dhum Aloo Plain Dosa & Sambar,dinner,dinner,true,portions,1.0,35,20,600,220,vit_august_2026_veg_menu,2026-08-03,true
+D045,Veg Jalfrezi & Veg Fried Rice,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-04,true
+D046,Poori & Channa Masala,dinner,dinner,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-06,true
+D047,Aloo Drumstick Masala & Idly,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-07,true
+D048,Gobi Peas Capsicum Masala & Phulka,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-08,true
+D049,Aloo Capsicum Muttar Masala,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-09,true
+D050,Bindi Do Pyaza & Methi Roti,dinner,dinner,true,portions,1.0,40,20,600,220,vit_august_2026_veg_menu,2026-08-10,true
+D051,Veg Manchurian & Fried Rice,dinner,dinner,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-11,true
+D052,Banaras Baigan & Ghee Rice,dinner,dinner,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-12,true
+D053,Dhal Makhani & Beetroot Poriyal,dinner,dinner,true,portions,1.0,45,20,650,240,vit_august_2026_veg_menu,2026-08-14,true
+D054,Fried Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,400,180,vit_august_2026_non_veg_menu,2026-08-01,true
+D055,Egg Burji (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-02,true
+D056,French Toast,breakfast,breakfast,false,portions,2.0,25,20,350,160,vit_august_2026_non_veg_menu,2026-08-03,true
+D057,Scrambled Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,400,180,vit_august_2026_non_veg_menu,2026-08-06,true
+D058,Boiled Fried Eggs (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-07,true
+D059,Omelette (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,350,160,vit_august_2026_non_veg_menu,2026-08-09,true
+D060,Fried Egg Masala,breakfast,breakfast,false,portions,2.0,25,20,350,160,vit_august_2026_non_veg_menu,2026-08-10,true
+D061,Masala Egg Burji (2 Nos),breakfast,breakfast,false,portions,2.0,25,20,400,180,vit_august_2026_non_veg_menu,2026-08-12,true
+D062,Boiled Egg (2 Nos),breakfast,breakfast,false,portions,2.0,20,20,450,200,vit_august_2026_non_veg_menu,2026-08-13,true
+D063,Chicken Biryani,lunch,lunch,false,portions,1.0,60,30,750,260,vit_august_2026_non_veg_menu,2026-08-02,true
+D064,Egg Manchurian (Dry),lunch,lunch,false,portions,1.0,40,20,600,220,vit_august_2026_non_veg_menu,2026-08-03,true
+D065,Chicken Tikka Masala,lunch,lunch,false,portions,1.0,50,25,700,250,vit_august_2026_non_veg_menu,2026-08-05,true
+D066,Fish Fry,lunch,lunch,false,portions,2.0,45,20,600,230,vit_august_2026_non_veg_menu,2026-08-06,true
+D067,Tandoori Chicken,lunch,lunch,false,portions,1.0,55,25,700,240,vit_august_2026_non_veg_menu,2026-08-07,true
+D068,Kadai Chicken,lunch,lunch,false,portions,1.0,45,25,700,240,vit_august_2026_non_veg_menu,2026-08-10,true
+D069,Chicken Hariyali,lunch,lunch,false,portions,1.0,50,25,650,230,vit_august_2026_non_veg_menu,2026-08-12,true
+D070,Chicken 65,lunch,lunch,false,portions,1.0,45,25,700,250,vit_august_2026_non_veg_menu,2026-08-14,true
+D071,Egg Puff,snacks,snacks,false,portions,1.0,30,20,450,200,vit_august_2026_non_veg_menu,2026-08-02,true
+D072,Egg Fried Rice,dinner,dinner,false,portions,1.0,35,20,650,240,vit_august_2026_non_veg_menu,2026-08-01,true

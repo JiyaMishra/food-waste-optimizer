@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  CalendarCheck,
   Utensils,
   Layers,
   Clock,
@@ -10,6 +9,7 @@ import {
   Calculator,
   Sliders,
   CheckCircle,
+  ArrowRight,
 } from 'lucide-react';
 import { api } from '../api/client';
 import { MetricCard } from '../components/MetricCard';
@@ -30,6 +30,13 @@ interface MealPlannerProps {
   selectedMeal: MealType;
   onNavigate: (page: string) => void;
 }
+
+const mealWindows: Record<MealType, { start: string; close: string; intervals: string[] }> = {
+  breakfast: { start: '07:00', close: '09:30', intervals: ['07:00', '07:30', '08:00', '08:30'] },
+  lunch: { start: '12:00', close: '14:00', intervals: ['12:00', '12:30', '13:00', '13:30'] },
+  snacks: { start: '16:30', close: '18:15', intervals: ['16:30', '17:00', '17:30', '18:00'] },
+  dinner: { start: '19:00', close: '21:00', intervals: ['19:00', '19:30', '20:00', '20:30'] },
+};
 
 export const MealPlanner: React.FC<MealPlannerProps> = ({
   selectedDate,
@@ -52,7 +59,56 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
   const [currentStock, setCurrentStock] = useState<number>(0);
   const [recomputing, setRecomputing] = useState(false);
 
-  const loadPlannerData = async () => {
+  const runOptimizer = useCallback(
+    async (dishId: string, currentForecast?: ForecastResponse | null) => {
+      const fcast = currentForecast || forecast;
+      if (!fcast || fcast.rows.length === 0) return;
+
+      const row = fcast.rows.find((r) => r.dish_id === dishId) || fcast.rows[0];
+      const totalExp = row.prediction;
+      const lowerExp = row.lower_bound;
+      const upperExp = row.upper_bound;
+
+      const win = mealWindows[selectedMeal] || mealWindows.breakfast;
+      const shares = [0.2, 0.35, 0.3, 0.15];
+      const intervals = win.intervals.map((t, idx) => ({
+        interval_start: t,
+        expected: totalExp * shares[idx],
+        lower: lowerExp * shares[idx],
+        upper: upperExp * shares[idx],
+      }));
+
+      setRecomputing(true);
+      try {
+        const planPayload: PlanRequest = {
+          service_date: selectedDate,
+          meal_type: selectedMeal,
+          dish_external_id: dishId,
+          intervals,
+          current_stock: currentStock,
+          batch_min: batchMin,
+          batch_max: batchMax,
+          kitchen_capacity: capacity,
+          prep_lead_minutes: prepLeadMinutes,
+          service_start: win.start,
+          service_close: win.close,
+          forecast_run_id: fcast.forecast_run_id,
+          model_version: fcast.model_version,
+          persist: true,
+        };
+
+        const planRes = await api.createPlan(planPayload);
+        setActivePlan(planRes);
+      } catch (err) {
+        setError(err as Error);
+      } finally {
+        setRecomputing(false);
+      }
+    },
+    [forecast, selectedDate, selectedMeal, currentStock, batchMin, batchMax, capacity, prepLeadMinutes]
+  );
+
+  const loadPlannerData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -67,63 +123,17 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
       const targetDishId = forecastRes.rows[0]?.dish_id || 'D001';
       setSelectedDishId(targetDishId);
 
-      // Auto-compute default plan for target dish
       await runOptimizer(targetDishId, forecastRes);
     } catch (err) {
       setError(err as Error);
     } finally {
       setLoading(false);
     }
-  };
-
-  const runOptimizer = async (dishId: string, currentForecast?: ForecastResponse | null) => {
-    const fcast = currentForecast || forecast;
-    if (!fcast || fcast.rows.length === 0) return;
-
-    const row = fcast.rows.find((r) => r.dish_id === dishId) || fcast.rows[0];
-    const totalExp = row.prediction;
-    const lowerExp = row.lower_bound;
-    const upperExp = row.upper_bound;
-
-    // Split across 4 30-min service intervals
-    const intervals = [
-      { interval_start: '07:00', expected: totalExp * 0.2, lower: lowerExp * 0.2, upper: upperExp * 0.2 },
-      { interval_start: '07:30', expected: totalExp * 0.35, lower: lowerExp * 0.35, upper: upperExp * 0.35 },
-      { interval_start: '08:00', expected: totalExp * 0.3, lower: lowerExp * 0.3, upper: upperExp * 0.3 },
-      { interval_start: '08:30', expected: totalExp * 0.15, lower: lowerExp * 0.15, upper: upperExp * 0.15 },
-    ];
-
-    setRecomputing(true);
-    try {
-      const planPayload: PlanRequest = {
-        service_date: selectedDate,
-        meal_type: selectedMeal,
-        dish_external_id: dishId,
-        intervals,
-        current_stock: currentStock,
-        batch_min: batchMin,
-        batch_max: batchMax,
-        kitchen_capacity: capacity,
-        prep_lead_minutes: prepLeadMinutes,
-        service_start: '07:00',
-        service_close: '10:00',
-        forecast_run_id: fcast.forecast_run_id,
-        model_version: fcast.model_version,
-        persist: true,
-      };
-
-      const planRes = await api.createPlan(planPayload);
-      setActivePlan(planRes);
-    } catch (err) {
-      setError(err as Error);
-    } finally {
-      setRecomputing(false);
-    }
-  };
+  }, [selectedDate, selectedMeal, runOptimizer]);
 
   useEffect(() => {
     loadPlannerData();
-  }, [selectedDate, selectedMeal]);
+  }, [loadPlannerData]);
 
   if (loading) {
     return <LoadingState message="Calculating dish demand forecasts and batch constraints..." />;
@@ -135,7 +145,7 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
         <ErrorState
           error={error}
           onRetry={loadPlannerData}
-          title="Demand Forecasting &amp; Planning Failed"
+          title="Demand Forecasting & Planning Failed"
         />
       </div>
     );
@@ -423,6 +433,20 @@ export const MealPlanner: React.FC<MealPlannerProps> = ({
                   <span className="constraint-desc">{check.detail}</span>
                 </div>
               ))}
+            </div>
+
+            <div className="plan-action-footer mt-4 flex items-center justify-between pt-3 border-t border-slate-700/50">
+              <span className="text-sm text-slate-400">
+                Active Dish: <strong className="text-emerald-400">{selectedDishRow?.dish_name || activePlan.dish_external_id}</strong> (Forecast: {selectedDishRow?.prediction.toFixed(0) ?? 280} portions)
+              </span>
+              <button
+                type="button"
+                className="btn btn--primary"
+                onClick={() => onNavigate('kitchen-simulation')}
+              >
+                <span>Launch Kitchen Simulation</span>
+                <ArrowRight size={15} />
+              </button>
             </div>
           </div>
         </div>

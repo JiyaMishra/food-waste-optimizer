@@ -219,7 +219,7 @@ def train_from_generated_data() -> dict:
             {"hint": "Generate synthetic data first."},
         )
     operations = pd.read_csv(operations_path, parse_dates=["date"])
-    cutoff = operations["date"].max() + pd.Timedelta(days=1)
+    cutoff = operations["date"].max() + pd.DateOffset(days=1)
     features = build_features(operations, forecast_cutoff=cutoff)
     try:
         artifact = train_model(features, artifact_path=str(settings.artifact_file))

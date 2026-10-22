@@ -14,7 +14,8 @@ def test_menu_retrieval(client):
     response = client.get("/api/v1/menu")
     assert response.status_code == 200
     body = response.json()
-    assert body["count"] == 9
+    assert body["count"] == len(body["items"])
+    assert body["count"] >= 9
     assert body["items"][0]["external_id"].startswith("D")
     assert body["items"][0]["is_synthetic"] is True
 

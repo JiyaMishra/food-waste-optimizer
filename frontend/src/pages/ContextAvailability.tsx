@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   MapPin,
   Building,
   Users,
   CloudRain,
-  Thermometer,
-  Calendar,
   AlertCircle,
   HelpCircle,
   RefreshCw,
@@ -13,7 +11,6 @@ import {
 } from 'lucide-react';
 import { api } from '../api/client';
 import { MetricCard } from '../components/MetricCard';
-import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import type { AvailabilityResponse, MealType, SyntheticContext } from '../types';
@@ -33,7 +30,7 @@ export const ContextAvailability: React.FC<ContextAvailabilityProps> = ({
   const [context, setContext] = useState<SyntheticContext | null>(null);
   const [availability, setAvailability] = useState<AvailabilityResponse | null>(null);
 
-  const loadContextData = async () => {
+  const loadContextData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -58,11 +55,11 @@ export const ContextAvailability: React.FC<ContextAvailabilityProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate, selectedMeal]);
 
   useEffect(() => {
     loadContextData();
-  }, [selectedDate, selectedMeal]);
+  }, [loadContextData]);
 
   if (loading) {
     return <LoadingState message="Fetching hostel occupancy, weather, and timetable availability..." />;

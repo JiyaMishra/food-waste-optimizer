@@ -44,6 +44,8 @@ export interface Dish {
   meal_type: MealType;
   category: string;
   is_active: boolean;
+  vegetarian_flag?: boolean;
+  typical_portion_size?: number;
   base_popularity?: number;
   allergens?: string[];
 }

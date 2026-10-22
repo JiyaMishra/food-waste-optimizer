@@ -69,16 +69,16 @@ export const Layout: React.FC<LayoutProps> = ({
   }, []);
 
   const navItems = [
-    { id: 'overview' as PageId, label: 'Overview', icon: <LayoutDashboard size={18} /> },
-    { id: 'meal-planner' as PageId, label: 'Meal Planner', icon: <CalendarCheck size={18} /> },
+    { id: 'overview' as PageId, label: 'Executive Overview', icon: <LayoutDashboard size={18} /> },
+    { id: 'meal-planner' as PageId, label: 'Smart Meal Planner', icon: <CalendarCheck size={18} /> },
     { id: 'rush-timeline' as PageId, label: 'Rush Timeline', icon: <TrendingUp size={18} /> },
     { id: 'context-availability' as PageId, label: 'Context & Availability', icon: <MapPin size={18} /> },
     { id: 'waste-diagnosis' as PageId, label: 'Waste Diagnosis', icon: <Stethoscope size={18} /> },
-    { id: 'kitchen-simulation' as PageId, label: 'Kitchen Live Simulation', icon: <Flame size={18} /> },
+    { id: 'kitchen-simulation' as PageId, label: 'Kitchen Simulation', icon: <Flame size={18} /> },
     { id: 'menu-analytics' as PageId, label: 'Menu Analytics', icon: <PieChart size={18} /> },
-    { id: 'evaluation' as PageId, label: 'Evaluation', icon: <Award size={18} /> },
-    { id: 'agent-trace' as PageId, label: 'Agent Trace', icon: <Cpu size={18} /> },
-    { id: 'settings-data' as PageId, label: 'Settings & Data', icon: <Settings size={18} /> },
+    { id: 'evaluation' as PageId, label: 'Policy Evaluation', icon: <Award size={18} /> },
+    { id: 'agent-trace' as PageId, label: 'Agent Orchestrator Trace', icon: <Cpu size={18} /> },
+    { id: 'settings-data' as PageId, label: 'Settings & Data Management', icon: <Settings size={18} /> },
   ];
 
   return (
@@ -121,10 +121,10 @@ export const Layout: React.FC<LayoutProps> = ({
               value={selectedMeal}
               onChange={(e) => onMealChange(e.target.value as MealType)}
             >
-              <option value="breakfast">Breakfast (07:00–10:00)</option>
-              <option value="lunch">Lunch (12:00–14:30)</option>
-              <option value="snacks">Snacks (16:00–18:00)</option>
-              <option value="dinner">Dinner (19:00–21:30)</option>
+              <option value="breakfast">Breakfast (07:00–09:30)</option>
+              <option value="lunch">Lunch (12:00–14:00)</option>
+              <option value="snacks">Snacks (16:30–18:15)</option>
+              <option value="dinner">Dinner (19:00–21:00)</option>
             </select>
           </div>
         </div>

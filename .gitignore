@@ -5,6 +5,10 @@ venv/
 .DS_Store
 .pytest_cache/
 *.db-journal
+*.db
+backend/data/*.db
+.env
+*.env
 node_modules/
 dist/
 frontend/dist/

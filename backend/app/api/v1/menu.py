@@ -14,12 +14,15 @@ router = APIRouter(prefix="/menu", tags=["menu"])
 def get_menu(
     meal_type: str | None = None,
     category: str | None = None,
+    vegetarian_flag: bool | None = None,
 ) -> MenuResponse:
     items = load_menu_catalogue()
     if meal_type:
         items = [item for item in items if item["meal_type"] == meal_type]
     if category:
         items = [item for item in items if item["category"] == category]
+    if vegetarian_flag is not None:
+        items = [item for item in items if item["vegetarian_flag"] == vegetarian_flag]
     return MenuResponse(
         source="data/menu_seed/vegetarian_menu.csv",
         count=len(items),
@@ -41,6 +44,7 @@ def sync_menu(db: Session = Depends(get_db)) -> MenuSyncResponse:
 def get_persisted_menu(
     meal_type: str | None = None,
     category: str | None = None,
+    vegetarian_flag: bool | None = None,
     db: Session = Depends(get_db),
 ) -> list[DishOut]:
-    return [DishOut.model_validate(item) for item in list_dishes(db, meal_type, category)]
+    return [DishOut.model_validate(item) for item in list_dishes(db, meal_type, category, vegetarian_flag)]

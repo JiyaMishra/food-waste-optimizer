@@ -8,7 +8,7 @@ from src.ml.forecasting import evaluate_chronologically
 
 data_dir = Path("data/generated")
 ops = pd.read_csv(data_dir / "food_operations.csv", parse_dates=["date"])
-features = build_features(ops, forecast_cutoff=ops.date.max() + pd.Timedelta(days=1))
+features = build_features(ops, forecast_cutoff=ops.date.max() + pd.DateOffset(days=1))
 result = evaluate_chronologically(features, test_days=30)
 data_dir.mkdir(exist_ok=True)
 (data_dir / "evaluation_report.json").write_text(json.dumps(result, indent=2))

@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Cpu,
   Clock,
-  CheckCircle,
-  AlertTriangle,
   Play,
   RotateCw,
   Terminal,
@@ -12,7 +9,6 @@ import {
   Download,
 } from 'lucide-react';
 import { api } from '../api/client';
-import { MetricCard } from '../components/MetricCard';
 import { StatusBadge } from '../components/StatusBadge';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
@@ -22,6 +18,13 @@ interface AgentTraceProps {
   selectedDate: string;
   selectedMeal: MealType;
 }
+
+const mealWindows: Record<MealType, { start: string; close: string }> = {
+  breakfast: { start: '07:00', close: '09:30' },
+  lunch: { start: '12:00', close: '14:00' },
+  snacks: { start: '16:30', close: '18:15' },
+  dinner: { start: '19:00', close: '21:00' },
+};
 
 export const AgentTrace: React.FC<AgentTraceProps> = ({
   selectedDate,
@@ -35,7 +38,7 @@ export const AgentTrace: React.FC<AgentTraceProps> = ({
   const [expandedTraceId, setExpandedTraceId] = useState<string | null>(null);
   const [runningAgent, setRunningAgent] = useState(false);
 
-  const loadTraces = async (targetTraceId?: string) => {
+  const loadTraces = useCallback(async (targetTraceId?: string) => {
     setLoading(true);
     setError(null);
     try {
@@ -54,11 +57,12 @@ export const AgentTrace: React.FC<AgentTraceProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [traceId]);
 
   const runNewPlanningWorkflow = async () => {
     setRunningAgent(true);
     setError(null);
+    const window = mealWindows[selectedMeal] || { start: '07:00', close: '10:00' };
     try {
       const res: PlanningWorkflowResponse = await api.runPlanningAgent({
         service_date: selectedDate,
@@ -71,8 +75,8 @@ export const AgentTrace: React.FC<AgentTraceProps> = ({
         batch_max: 500,
         kitchen_capacity: 500,
         prep_lead_minutes: 30,
-        service_start: '07:00',
-        service_close: '10:00',
+        service_start: window.start,
+        service_close: window.close,
         persist: true,
       });
 
@@ -87,7 +91,7 @@ export const AgentTrace: React.FC<AgentTraceProps> = ({
 
   useEffect(() => {
     loadTraces();
-  }, [selectedDate, selectedMeal]);
+  }, [loadTraces, selectedDate, selectedMeal]);
 
   if (loading && traces.length === 0) {
     return <LoadingState message="Fetching agent stage execution logs and tool call traces..." />;

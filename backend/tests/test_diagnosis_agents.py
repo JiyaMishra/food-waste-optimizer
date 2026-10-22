@@ -167,3 +167,28 @@ def test_invalid_agent_output_is_rejected_and_traced(
         .where(AgentTrace.status == "rejected")
     )
     assert rejected and rejected >= 1
+
+
+def test_planning_workflow_lunch_and_dinner(synced_client):
+    """Verify orchestrator dynamically adapts service windows for lunch and dinner."""
+    for meal in ("lunch", "dinner"):
+        resp = synced_client.post(
+            "/api/v1/agents/planning",
+            json={
+                "service_date": "2026-09-01",
+                "meal_type": meal,
+                "hostel_id": "H01",
+                "mess_id": "M01",
+                "attendance_probability": 0.65,
+                "current_stock": 0,
+                "batch_min": 20,
+                "batch_max": 500,
+                "kitchen_capacity": 500,
+                "prep_lead_minutes": 30,
+                "persist": True,
+            },
+        )
+        assert resp.status_code == 200, f"Planning workflow failed for {meal}: {resp.text}"
+        body = resp.json()
+        assert body["status"] == "completed"
+        assert len(body["stages"]) == 5
