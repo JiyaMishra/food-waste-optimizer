@@ -1,0 +1,541 @@
+date,meal_id,meal_type,dish_id,dish_name,vegetarian_flag,is_synthetic,generation_seed,generated_at,scenario_id,dataset_version
+2026-07-03,MEAL0000001,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000001,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000001,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000002,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000002,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000002,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000003,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000004,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-03,MEAL0000004,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000005,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000005,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000005,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000006,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000006,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000006,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000007,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000008,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-04,MEAL0000008,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000009,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000009,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000009,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000010,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000010,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000010,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000011,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000012,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-05,MEAL0000012,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000013,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000013,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000013,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000014,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000014,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000014,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000015,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000016,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-06,MEAL0000016,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000017,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000017,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000017,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000018,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000018,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000018,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000019,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000020,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-07,MEAL0000020,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000021,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000021,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000021,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000022,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000022,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000022,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000023,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000024,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-08,MEAL0000024,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000025,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000025,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000025,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000026,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000026,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000026,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000027,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000028,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-09,MEAL0000028,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000029,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000029,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000029,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000030,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000030,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000030,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000031,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000032,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-10,MEAL0000032,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000033,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000033,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000033,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000034,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000034,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000034,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000035,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000036,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-11,MEAL0000036,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000037,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000037,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000037,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000038,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000038,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000038,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000039,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000040,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-12,MEAL0000040,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000041,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000041,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000041,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000042,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000042,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000042,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000043,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000044,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-13,MEAL0000044,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000045,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000045,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000045,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000046,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000046,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000046,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000047,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000048,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-14,MEAL0000048,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000049,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000049,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000049,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000050,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000050,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000050,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000051,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000052,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-15,MEAL0000052,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000053,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000053,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000053,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000054,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000054,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000054,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000055,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000056,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-16,MEAL0000056,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000057,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000057,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000057,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000058,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000058,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000058,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000059,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000060,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-17,MEAL0000060,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000061,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000061,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000061,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000062,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000062,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000062,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000063,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000064,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-18,MEAL0000064,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000065,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000065,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000065,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000066,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000066,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000066,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000067,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000068,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-19,MEAL0000068,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000069,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000069,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000069,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000070,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000070,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000070,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000071,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000072,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-20,MEAL0000072,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000073,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000073,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000073,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000074,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000074,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000074,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000075,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000076,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-21,MEAL0000076,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000077,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000077,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000077,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000078,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000078,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000078,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000079,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000080,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-22,MEAL0000080,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000081,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000081,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000081,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000082,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000082,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000082,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000083,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000084,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-23,MEAL0000084,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000085,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000085,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000085,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000086,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000086,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000086,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000087,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000088,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-24,MEAL0000088,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000089,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000089,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000089,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000090,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000090,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000090,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000091,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000092,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-25,MEAL0000092,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000093,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000093,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000093,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000094,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000094,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000094,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000095,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000096,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-26,MEAL0000096,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000097,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000097,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000097,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000098,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000098,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000098,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000099,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000100,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-27,MEAL0000100,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000101,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000101,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000101,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000102,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000102,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000102,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000103,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000104,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-28,MEAL0000104,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000105,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000105,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000105,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000106,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000106,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000106,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000107,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000108,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-29,MEAL0000108,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000109,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000109,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000109,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000110,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000110,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000110,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000111,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000112,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-30,MEAL0000112,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000113,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000113,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000113,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000114,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000114,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000114,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000115,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000116,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-07-31,MEAL0000116,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000117,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000117,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000117,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000118,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000118,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000118,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000119,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000120,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-01,MEAL0000120,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000121,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000121,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000121,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000122,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000122,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000122,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000123,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000124,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-02,MEAL0000124,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000125,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000125,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000125,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000126,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000126,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000126,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000127,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000128,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-03,MEAL0000128,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000129,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000129,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000129,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000130,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000130,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000130,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000131,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000132,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-04,MEAL0000132,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000133,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000133,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000133,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000134,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000134,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000134,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000135,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000136,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-05,MEAL0000136,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000137,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000137,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000137,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000138,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000138,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000138,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000139,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000140,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-06,MEAL0000140,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000141,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000141,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000141,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000142,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000142,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000142,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000143,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000144,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-07,MEAL0000144,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000145,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000145,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000145,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000146,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000146,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000146,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000147,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000148,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-08,MEAL0000148,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000149,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000149,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000149,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000150,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000150,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000150,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000151,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000152,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-09,MEAL0000152,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000153,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000153,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000153,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000154,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000154,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000154,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000155,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000156,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-10,MEAL0000156,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000157,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000157,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000157,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000158,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000158,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000158,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000159,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000160,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-11,MEAL0000160,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000161,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000161,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000161,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000162,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000162,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000162,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000163,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000164,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-12,MEAL0000164,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000165,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000165,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000165,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000166,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000166,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000166,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000167,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000168,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-13,MEAL0000168,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000169,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000169,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000169,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000170,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000170,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000170,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000171,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000172,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-14,MEAL0000172,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000173,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000173,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000173,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000174,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000174,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000174,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000175,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000176,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-15,MEAL0000176,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000177,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000177,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000177,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000178,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000178,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000178,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000179,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000180,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-16,MEAL0000180,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000181,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000181,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000181,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000182,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000182,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000182,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000183,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000184,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-17,MEAL0000184,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000185,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000185,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000185,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000186,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000186,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000186,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000187,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000188,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-18,MEAL0000188,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000189,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000189,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000189,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000190,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000190,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000190,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000191,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000192,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-19,MEAL0000192,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000193,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000193,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000193,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000194,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000194,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000194,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000195,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000196,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-20,MEAL0000196,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000197,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000197,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000197,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000198,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000198,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000198,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000199,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000200,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-21,MEAL0000200,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000201,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000201,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000201,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000202,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000202,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000202,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000203,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000204,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-22,MEAL0000204,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000205,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000205,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000205,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000206,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000206,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000206,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000207,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000208,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-23,MEAL0000208,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000209,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000209,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000209,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000210,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000210,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000210,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000211,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000212,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-24,MEAL0000212,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000213,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000213,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000213,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000214,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000214,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000214,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000215,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000216,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-25,MEAL0000216,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000217,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000217,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000217,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000218,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000218,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000218,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000219,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000220,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-26,MEAL0000220,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000221,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000221,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000221,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000222,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000222,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000222,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000223,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000224,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-27,MEAL0000224,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000225,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000225,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000225,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000226,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000226,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000226,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000227,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000228,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-28,MEAL0000228,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000229,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000229,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000229,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000230,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000230,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000230,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000231,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000232,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-29,MEAL0000232,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000233,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000233,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000233,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000234,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000234,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000234,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000235,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000236,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-30,MEAL0000236,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000237,breakfast,D001,Idli,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000237,breakfast,D002,Dosa,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000237,breakfast,D003,Upma,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000238,lunch,D004,Sambar,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000238,lunch,D005,Rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000238,lunch,D006,Chapathi,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000239,snacks,D007,Vegetable snack,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000240,dinner,D008,Curd rice,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0
+2026-08-31,MEAL0000240,dinner,D009,Poriyal,True,True,42,2026-10-20T18:47:31.696722+00:00,synthetic_baseline_v1,1.0.0

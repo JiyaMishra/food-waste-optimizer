@@ -2,15 +2,9 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
-.env
 .DS_Store
 .pytest_cache/
-ml/artifacts/*
-!ml/artifacts/.gitkeep
-data/generated/*
-!data/generated/.gitkeep
-backend/data/*.db
-backend/data/*.db-journal
+*.db-journal
 node_modules/
 dist/
 frontend/dist/
