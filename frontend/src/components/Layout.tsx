@@ -145,11 +145,6 @@ export const Layout: React.FC<LayoutProps> = ({
               </span>
             )}
           </div>
-
-          <div className="synthetic-pill" title="Synthetic records only">
-            <AlertTriangle size={13} />
-            <span>Synthetic Mode</span>
-          </div>
         </div>
       </header>
 
@@ -202,7 +197,6 @@ export const Layout: React.FC<LayoutProps> = ({
         {/* Content Area */}
         <main className="main-content">
           <div className="page-wrapper">
-            <SyntheticBanner />
             {children}
           </div>
         </main>
