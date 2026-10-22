@@ -33,9 +33,35 @@ An intelligent, context-driven cafeteria food waste optimization platform combin
 
 ## Quick Start Guide
 
-### Option 1: Full-Stack via Docker Compose (Recommended)
+### Option 1: Single-Command Plug & Play (Recommended - Zero Setup)
 
-Run the entire platform (PostgreSQL database, FastAPI backend, and React/Nginx frontend) in isolated containers:
+Run the entire integrated platform (Backend + ML Engine + Frontend Cockpit) with one command. The unified runner automatically checks dependencies, configures local environment, verifies the SQLite database, and launches both services:
+
+```bash
+# Clone and enter the person-c branch
+git clone -b person-c https://github.com/JiyaMishra/food-waste-optimizer.git
+cd food-waste-optimizer
+
+# Start the full stack:
+npm start
+# or:
+npm run dev
+# or:
+python run_project.py
+```
+
+- **Interactive Web Cockpit**: [http://localhost:5173](http://localhost:5173)
+- **FastAPI Backend API**: [http://localhost:8000](http://localhost:8000)
+- **Interactive Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Health Check Endpoint**: [http://localhost:8000/health](http://localhost:8000/health)
+
+*(To stop both services cleanly, press `Ctrl + C` in the terminal).*
+
+---
+
+### Option 2: Full-Stack via Docker Compose
+
+Run the platform in isolated containers (PostgreSQL database, FastAPI backend, and React/Nginx frontend):
 
 ```bash
 # 1. Copy the environment template
@@ -51,7 +77,7 @@ docker compose up --build
 
 ---
 
-### Option 2: Local Development Setup
+### Option 3: Manual Step-by-Step Setup
 
 #### 1. Backend Setup (FastAPI & ML Engine)
 ```bash

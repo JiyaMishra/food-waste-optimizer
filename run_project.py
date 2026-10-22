@@ -1,7 +1,8 @@
 """
-Unified Single-Command Runner for the Entire Food Waste Optimization System.
+Autonomous Zero-Friction Single-Command Runner for the Food Waste Optimization System.
 Starts both the FastAPI Backend (Person B + Person A) and the React Frontend (Person C)
-together as ONE integrated process, with automatic health monitoring and graceful shutdown.
+together as ONE integrated process, with automatic health monitoring, dependency resolution,
+and graceful shutdown.
 """
 
 import os
@@ -40,11 +41,27 @@ def kill_proc(proc):
             pass
 
 def ensure_environment():
-    # 1. Ensure backend/data directory exists
+    # 1. Check Python dependencies
+    required_modules = ["fastapi", "uvicorn", "pydantic", "sqlalchemy", "sklearn", "pandas"]
+    missing = []
+    for mod in required_modules:
+        try:
+            __import__(mod)
+        except ImportError:
+            missing.append(mod)
+    if missing:
+        print(f"[*] Missing Python packages ({', '.join(missing)}). Installing requirements.txt...")
+        req_file = os.path.join(ROOT_DIR, "requirements.txt")
+        if os.path.exists(req_file):
+            subprocess.run([sys.executable, "-m", "pip", "install", "-r", req_file], check=True)
+        else:
+            print("[!] requirements.txt not found. Please install dependencies manually.")
+
+    # 2. Ensure backend/data directory exists
     backend_data = os.path.join(ROOT_DIR, "backend", "data")
     os.makedirs(backend_data, exist_ok=True)
 
-    # 2. Ensure .env exists
+    # 3. Ensure .env exists with local SQLite configuration
     env_file = os.path.join(ROOT_DIR, ".env")
     if not os.path.exists(env_file):
         print("[*] Creating local .env configuration...")
@@ -57,12 +74,39 @@ def ensure_environment():
         with open(env_file, "w", encoding="utf-8") as f:
             f.write(env_content)
 
-    # 3. Ensure frontend dependencies are installed
+    # 4. Ensure database exists and schema is up to date
+    db_file = os.path.join(backend_data, "food_optimizer.db")
+    if not os.path.exists(db_file) or os.path.getsize(db_file) == 0:
+        print("[*] Initializing local database schema (alembic upgrade head)...")
+        alembic_ini = os.path.join(ROOT_DIR, "backend", "alembic.ini")
+        try:
+            subprocess.run([sys.executable, "-m", "alembic", "-c", alembic_ini, "upgrade", "head"], cwd=ROOT_DIR, check=True)
+            print("[OK] Database schema initialized.")
+        except Exception as e:
+            print(f"[!] Note on database migration: {e}")
+
+    # 5. Ensure model artifact exists
+    model_file = os.path.join(ROOT_DIR, "ml", "artifacts", "context_model.joblib")
+    if not os.path.exists(model_file) or os.path.getsize(model_file) == 0:
+        print("[*] Pre-trained model artifact not found. Training context model...")
+        train_script = os.path.join(ROOT_DIR, "scripts", "train_model.py")
+        if os.path.exists(train_script):
+            try:
+                subprocess.run([sys.executable, train_script], cwd=ROOT_DIR, check=True)
+                print("[OK] Model trained successfully.")
+            except Exception as e:
+                print(f"[!] Note on model training: {e}")
+
+    # 6. Ensure frontend dependencies are installed
     node_modules = os.path.join(FRONTEND_DIR, "node_modules")
     if not os.path.exists(node_modules):
         print("[*] Installing frontend dependencies (npm install)...")
         npm_cmd = "npm.cmd" if sys.platform == "win32" else "npm"
-        subprocess.run([npm_cmd, "install"], cwd=FRONTEND_DIR, check=True)
+        try:
+            subprocess.run([npm_cmd, "install"], cwd=FRONTEND_DIR, check=True)
+            print("[OK] Frontend dependencies installed.")
+        except Exception as e:
+            print(f"[!] Warning during npm install: {e}")
 
 def main():
     print("=" * 70)
@@ -95,7 +139,7 @@ def main():
 
     # 3. Wait for readiness
     print("[*] Waiting for services to synchronize...")
-    for _ in range(20):
+    for _ in range(25):
         b_ok = check_service("http://127.0.0.1:8000/health")
         f_ok = check_service("http://127.0.0.1:5173")
         if b_ok and f_ok:
