@@ -19,6 +19,7 @@ from contextlib import asynccontextmanager
 
 from backend.app.api.v1 import health
 from backend.app.api.v1.router import router as api_v1_router
+from backend.app.api import messwise as messwise_api
 from backend.app.core.config import get_settings
 from backend.app.core.errors import DomainError, error_payload
 from backend.app.core.logging import configure_logging, request_id_ctx
@@ -180,3 +181,6 @@ def root() -> dict:
 app.include_router(health.router)
 app.include_router(health.router, prefix=settings.api_v1_prefix, include_in_schema=False)
 app.include_router(api_v1_router, prefix=settings.api_v1_prefix)
+app.include_router(messwise_api.router, prefix="/api")
+
+

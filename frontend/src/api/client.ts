@@ -26,6 +26,18 @@ import type {
   SimulationEvent,
   SyntheticContext,
 } from '../types';
+import type {
+  MessWiseWeather,
+  FoodPreferenceResult,
+  DemandForecastResult,
+  WasteDiagnosisResult,
+  KitchenPlanResult,
+  SmartSuggestion,
+  ChatResponse,
+  MealOutcomeRecord,
+  PerformanceEvaluation,
+  MessWiseContext,
+} from '../types/messwise';
 
 export const API_BASE_URL =
   (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, '') ||
@@ -326,4 +338,121 @@ export const api = {
   getRunExportCsvUrl: (runId: string) => `${API_BASE_URL}/api/v1/exports/runs/${runId}?format=csv`,
   getTraceExportCsvUrl: (traceId?: string) =>
     `${API_BASE_URL}/api/v1/exports/agent-traces?format=csv${traceId ? `&trace_id=${traceId}` : ''}`,
+
+  // MessWise Five Agents & Kitchen Operations Endpoints
+  getMessWiseHealth: () => request<Record<string, any>>('/api/health'),
+
+  getMessWiseMenu: (date?: string, meal?: string) => {
+    const q = new URLSearchParams();
+    if (date) q.append('date', date);
+    if (meal) q.append('meal', meal);
+    return request<{ dates: string[]; meals: string[]; selected_date: string; selected_meal: string; dishes: string[]; count: number }>(`/api/menu?${q.toString()}`);
+  },
+
+  getMessWiseContext: (date: string, meal: string, foodItem: string, demoWeather?: string) => {
+    const q = new URLSearchParams({ date, meal, food_item: foodItem });
+    if (demoWeather) q.append('demo_weather', demoWeather);
+    return request<MessWiseContext>(`/api/context?${q.toString()}`);
+  },
+
+  getMessWiseWeather: (date: string, meal: string, demoMode?: string) => {
+    const q = new URLSearchParams({ date, meal });
+    if (demoMode) q.append('demo_mode', demoMode);
+    return request<MessWiseWeather>(`/api/weather?${q.toString()}`);
+  },
+
+  getMessWisePreference: (foodItem: string, meal?: string) => {
+    const q = new URLSearchParams({ food_item: foodItem });
+    if (meal) q.append('meal', meal);
+    return request<FoodPreferenceResult>(`/api/preference?${q.toString()}`);
+  },
+
+  predictMessWiseDemand: (payload: {
+    food_item: string;
+    date: string;
+    meal: string;
+    attendance?: number;
+    exam_intensity?: number;
+    temperature_c?: number;
+    rainfall_mm?: number;
+    preference_score?: number;
+  }) =>
+    request<DemandForecastResult>('/api/predict-demand', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  analyzeMessWiseWaste: (payload: {
+    food_item: string;
+    meal?: string;
+    date?: string;
+    prepared_portions?: number;
+    consumed_portions?: number;
+    leftover_portions?: number;
+  }) =>
+    request<WasteDiagnosisResult>('/api/analyze-waste', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  getMessWiseKitchenPlan: (payload: {
+    food_item: string;
+    predicted_demand: number;
+    meal?: string;
+    risk_level?: string;
+    kitchen_capacity?: number;
+  }) =>
+    request<KitchenPlanResult>('/api/kitchen-plan', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  getMessWiseSuggestions: (foodItem: string, meal: string, date: string, attendance?: number, demoWeather?: string) => {
+    const q = new URLSearchParams({ food_item: foodItem, meal, date });
+    if (attendance) q.append('attendance', String(attendance));
+    if (demoWeather) q.append('demo_weather', demoWeather);
+    return request<SmartSuggestion[]>(`/api/suggestions?${q.toString()}`);
+  },
+
+  actionMessWiseSuggestion: (suggestionId: string, action: 'dismiss' | 'complete') =>
+    request<{ status: string; suggestion_id: string; action: string }>('/api/suggestions/action', {
+      method: 'POST',
+      body: JSON.stringify({ suggestion_id: suggestionId, action }),
+    }),
+
+  sendMessWiseChat: (payload: {
+    message: string;
+    food_item?: string;
+    meal?: string;
+    date?: string;
+    attendance?: number;
+  }) =>
+    request<ChatResponse>('/api/chat', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  recordMessWiseOutcome: (payload: {
+    date: string;
+    meal: string;
+    food_item: string;
+    prepared_portions: number;
+    actual_consumers: number;
+    leftover_portions: number;
+    predicted_consumers?: number;
+  }) =>
+    request<PerformanceEvaluation>('/api/meal-outcomes', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  getMessWisePerformance: () =>
+    request<{
+      evaluation: PerformanceEvaluation;
+      recorded_outcomes: MealOutcomeRecord[];
+      model_metadata: Record<string, any>;
+    }>('/api/performance'),
+
+  getMessWiseAgentStatus: () => request<{ agents: Array<{ id: string; name: string; status: string; type: string; purpose: string }> }>('/api/agent-status'),
 };
+

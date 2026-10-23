@@ -14,12 +14,15 @@ import {
   AlertTriangle,
   Menu,
   X,
+  Utensils,
+  ChevronRight,
 } from 'lucide-react';
 import { SyntheticBanner } from './SyntheticBanner';
 import { api } from '../api/client';
 import type { MealType } from '../types';
 
 export type PageId =
+  | 'messwise'
   | 'overview'
   | 'meal-planner'
   | 'rush-timeline'
@@ -69,6 +72,7 @@ export const Layout: React.FC<LayoutProps> = ({
   }, []);
 
   const navItems = [
+    { id: 'messwise' as PageId, label: 'MessWise Kitchen Operations', icon: <Utensils size={18} /> },
     { id: 'overview' as PageId, label: 'Executive Overview', icon: <LayoutDashboard size={18} /> },
     { id: 'meal-planner' as PageId, label: 'Smart Meal Planner', icon: <CalendarCheck size={18} /> },
     { id: 'rush-timeline' as PageId, label: 'Rush Timeline', icon: <TrendingUp size={18} /> },
@@ -95,11 +99,11 @@ export const Layout: React.FC<LayoutProps> = ({
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
-          <div className="brand-logo" onClick={() => onNavigate('overview')}>
+          <div className="brand-logo" onClick={() => onNavigate('messwise')}>
             <span className="brand-icon">🌱</span>
             <div className="brand-text">
-              <span className="brand-title">Food Waste Optimizer</span>
-              <span className="brand-subtitle">Autonomous Mess System • Person C</span>
+              <span className="brand-title">MessWise</span>
+              <span className="brand-subtitle">AI Food Waste Optimizer</span>
             </div>
           </div>
         </div>
@@ -152,9 +156,33 @@ export const Layout: React.FC<LayoutProps> = ({
       <div className="app-container">
         {/* Sidebar Navigation */}
         <nav className={`sidebar ${mobileMenuOpen ? 'sidebar--open' : ''}`}>
-          <div className="sidebar-section-title">DASHBOARD NAVIGATION</div>
+          <div className="sidebar-section-title">PRIMARY OPERATIONS</div>
+          <ul className="nav-list" style={{ marginBottom: '16px' }}>
+            <li className="nav-item">
+              <button
+                type="button"
+                id="nav-messwise"
+                className={`nav-button ${currentPage === 'messwise' ? 'nav-button--active' : ''}`}
+                style={{
+                  background: currentPage === 'messwise' ? 'rgba(99, 102, 241, 0.25)' : 'rgba(99, 102, 241, 0.1)',
+                  borderColor: 'rgba(99, 102, 241, 0.4)',
+                  fontWeight: 600,
+                }}
+                onClick={() => {
+                  onNavigate('messwise');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <span className="nav-icon" style={{ color: '#818cf8' }}><Utensils size={18} /></span>
+                <span className="nav-label">MessWise Kitchen Dashboard</span>
+                {currentPage === 'messwise' && <span className="nav-active-pip" />}
+              </button>
+            </li>
+          </ul>
+
+          <div className="sidebar-section-title">RESEARCH & OPERATIONS CONSOLE</div>
           <ul className="nav-list">
-            {navItems.map((item) => {
+            {navItems.slice(1).map((item) => {
               const isActive = currentPage === item.id;
               return (
                 <li key={item.id} className="nav-item">
@@ -179,23 +207,20 @@ export const Layout: React.FC<LayoutProps> = ({
           <div className="sidebar-footer">
             <div className="sidebar-meta-card">
               <div className="meta-row">
-                <span>Model:</span>
-                <code>context-rf-v4</code>
+                <span>Demand Model:</span>
+                <code>rf_v1 (RF)</code>
               </div>
               <div className="meta-row">
-                <span>Scenario:</span>
-                <code>synthetic_v1</code>
-              </div>
-              <div className="meta-row">
-                <span>Seed:</span>
-                <code>42</code>
+                <span>Dataset:</span>
+                <code>Synthetic 973 Records</code>
               </div>
             </div>
           </div>
         </nav>
 
-        {/* Content Area */}
+        {/* Main Content Pane */}
         <main className="main-content">
+          <SyntheticBanner />
           <div className="page-wrapper">
             {children}
           </div>
@@ -204,3 +229,4 @@ export const Layout: React.FC<LayoutProps> = ({
     </div>
   );
 };
+

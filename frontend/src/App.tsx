@@ -10,15 +10,22 @@ import { MenuAnalytics } from './pages/MenuAnalytics';
 import { Evaluation } from './pages/Evaluation';
 import { AgentTrace } from './pages/AgentTrace';
 import { SettingsData } from './pages/SettingsData';
+import { MessWiseDashboard } from './pages/MessWiseDashboard';
 import type { MealType } from './types';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<PageId>('overview');
-  const [selectedDate, setSelectedDate] = useState<string>('2026-09-01');
-  const [selectedMeal, setSelectedMeal] = useState<MealType>('breakfast');
+  const [currentPage, setCurrentPage] = useState<PageId>('messwise');
+  const [selectedDate, setSelectedDate] = useState<string>('2026-08-04');
+  const [selectedMeal, setSelectedMeal] = useState<MealType>('lunch');
 
   const renderCurrentPage = () => {
     switch (currentPage) {
+      case 'messwise':
+        return (
+          <MessWiseDashboard
+            onNavigateToConsole={() => setCurrentPage('overview')}
+          />
+        );
       case 'overview':
         return (
           <Overview
